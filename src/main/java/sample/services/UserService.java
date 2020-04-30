@@ -26,6 +26,7 @@ public class UserService {
             FileUtils.copyURLToFile(UserService.class.getClassLoader().getResource("users.json"), USERS_PATH.toFile());
         }
         ObjectMapper objectMapper = new ObjectMapper();
+
         users = objectMapper.readValue(USERS_PATH.toFile(), new TypeReference<List<User>>() {
         });
     }
