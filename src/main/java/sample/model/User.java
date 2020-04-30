@@ -43,16 +43,6 @@ public class User {
         this.genres = genres;
     }
 
-    public User(String userType, String text1, String text2, String email, String phoneNumber, String username, String password) {
-        this.userType = userType;
-        this.text1 = text1;
-        this.text2 = text2;
-        this.email = email;
-        this.phoneNumber = phoneNumber;
-        this.username = username;
-        this.password = password;
-    }
-
     public String getText1() {
         return text1;
     }

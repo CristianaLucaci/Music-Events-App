@@ -61,6 +61,8 @@ public class RegisterController {
     private CheckBox folkCheckBox;
     @FXML
     private CheckBox electronicCheckBox;
+    @FXML
+    private Text registrationMessage;
 
     private static String userType;
     private static List<String> genres;
@@ -139,13 +141,18 @@ public class RegisterController {
     @FXML
     public void registerButtonClicked(ActionEvent event) throws IOException {
 
-            handleRegisterAction();
-            Parent registerParent = FXMLLoader.load(getClass().getResource("/fxml/login.fxml"));
-            Scene registerScene = new Scene(registerParent);
+            try {
+                handleGenreCheckBoxes();
+                UserService.addUser(userType, textField1.getText(), textField2.getText(), emailField.getText(), phoneNumberField.getText(), usernameField.getText(), passwordField.getText(), genres);
+                Parent registerParent = FXMLLoader.load(getClass().getResource("/fxml/login.fxml"));
+                Scene registerScene = new Scene(registerParent);
 
-            Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            window.setScene(registerScene);
-            window.show();
+                Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                window.setScene(registerScene);
+                window.show();
+            } catch(UsernameAlreadyExistsException e){
+                registrationMessage.setText(e.getMessage());
+            }
 
     }
 }
