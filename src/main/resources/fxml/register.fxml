@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="291.0" prefWidth="679.0" stylesheets="/stylesheets/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.RegisterController">
+    <children>
+        <Button fx:id="registerButton" layoutX="237.0" layoutY="252.0" mnemonicParsing="false" onAction="#registerButtonClicked" prefHeight="25.0" prefWidth="205.0" styleClass="button-login" text="Register" textFill="WHITE">
+            <font>
+                <Font name="System Bold" size="11.0" />
+            </font></Button>
+        <AnchorPane fx:id="userAnchorPane" layoutX="289.0" layoutY="44.0" prefHeight="176.0" prefWidth="353.0" visible="false">
+            <children>
+                <TextField layoutX="20.0" layoutY="22.0" promptText="First Name" />
+                <TextField layoutX="177.0" layoutY="22.0" promptText="Last Name" />
+                <TextField layoutX="20.0" layoutY="54.0" promptText="email" />
+                <TextField layoutX="177.0" layoutY="54.0" promptText="Phone Number" />
+                <TextField layoutX="20.0" layoutY="88.0" promptText="username" />
+                <TextField layoutX="177.0" layoutY="88.0" promptText="password" />
+                <Text layoutX="20.0" layoutY="143.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Preferred genres:" />
+                <CheckBox layoutX="121.0" layoutY="130.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="56.0" text="Rock" />
+                <CheckBox layoutX="180.0" layoutY="130.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="56.0" text="Jazz" />
+                <CheckBox layoutX="121.0" layoutY="154.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="62.0" text="Latin" />
+                <CheckBox layoutX="242.0" layoutY="130.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="97.0" text="Heavy Metal" />
+                <CheckBox layoutX="180.0" layoutY="154.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="62.0" text="Folk" />
+                <CheckBox layoutX="242.0" layoutY="154.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="73.0" text="Electronic" />
+                <CheckBox layoutX="48.0" layoutY="154.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="62.0" text="Reggae" />
+            </children>
+        </AnchorPane>
+        <Pane layoutX="46.0" layoutY="67.0" prefHeight="176.0" prefWidth="260.0">
+            <children>
+                <CheckBox fx:id="userBox" layoutX="31.0" layoutY="35.0" mnemonicParsing="false" onAction="#handleUserBox" prefHeight="29.0" prefWidth="97.0" text="Participant" />
+                <CheckBox fx:id="eventManagerBox" layoutX="31.0" layoutY="64.0" mnemonicParsing="false" onAction="#handleEventManagerBox" prefHeight="29.0" prefWidth="117.0" text="Event Manager" />
+                <CheckBox fx:id="bandBox" layoutX="31.0" layoutY="93.0" mnemonicParsing="false" onAction="#handleBandBox" prefHeight="29.0" prefWidth="73.0" text="Band" />
+                <Text layoutX="19.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Account type:">
+                    <font>
+                        <Font size="16.0" />
+                    </font>
+                </Text>
+            </children>
+        </Pane>
+        <Text layoutX="276.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Registration">
+            <font>
+                <Font name="System Bold" size="22.0" />
+            </font>
+        </Text>
+        <AnchorPane fx:id="eventManagerAnchorPane" layoutX="289.0" layoutY="44.0" prefHeight="176.0" prefWidth="353.0" visible="false">
+            <children>
+                <TextField layoutX="20.0" layoutY="22.0" promptText="Company Name" />
+                <TextField layoutX="20.0" layoutY="54.0" promptText="email" />
+                <TextField layoutX="177.0" layoutY="22.0" promptText="Address" />
+                <TextField layoutX="177.0" layoutY="54.0" promptText="Phone Number" />
+                <TextField layoutX="177.0" layoutY="88.0" promptText="password" />
+                <TextField layoutX="20.0" layoutY="88.0" promptText="username" />
+            </children>
+        </AnchorPane>
+        <AnchorPane fx:id="bandAnchorPane" layoutX="289.0" layoutY="44.0" prefHeight="176.0" prefWidth="353.0" visible="false">
+            <children>
+                <TextField layoutX="20.0" layoutY="22.0" promptText="Band Name" />
+                <TextField layoutX="20.0" layoutY="54.0" promptText="email" />
+                <TextField layoutX="177.0" layoutY="54.0" promptText="Phone Number" />
+                <TextField layoutX="20.0" layoutY="88.0" promptText="username" />
+                <TextField layoutX="177.0" layoutY="88.0" promptText="password" />
+                <CheckBox layoutX="48.0" layoutY="154.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="62.0" text="Reggae" />
+                <CheckBox layoutX="242.0" layoutY="130.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="97.0" text="Heavy Metal" />
+                <CheckBox layoutX="242.0" layoutY="154.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="73.0" text="Electronic" />
+                <CheckBox layoutX="121.0" layoutY="130.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="56.0" text="Rock" />
+                <CheckBox layoutX="180.0" layoutY="154.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="62.0" text="Folk" />
+                <Text layoutX="22.0" layoutY="143.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Genres played:" />
+                <CheckBox layoutX="180.0" layoutY="130.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="56.0" text="Jazz" />
+                <CheckBox layoutX="121.0" layoutY="154.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="62.0" text="Latin" />
+            </children>
+        </AnchorPane>
+    </children>
+</AnchorPane>

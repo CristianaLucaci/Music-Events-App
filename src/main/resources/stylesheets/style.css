@@ -1,0 +1,19 @@
+.root{
+    -fx-background-color: #FFFFFF;
+}
+
+.button{
+    -fx-background-color: #FF8552;
+}
+
+.button-login{
+    -fx-background-color: #00B9F2;
+}
+
+.button-register {
+    -fx-background-color: #494949;
+}
+
+.text-field1{
+    -fx-background-color: #F2F2EA;
+}
