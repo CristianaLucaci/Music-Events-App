@@ -75,11 +75,11 @@ public class UserService {
         return md;
     }
 
-    public static String searchUser(String username, String password){
+    public static User searchUser(String username, String password){
         for (User user : users)
             if (Objects.equals(username, user.getUsername()))
                 if (Objects.equals(encodePassword(username, password), user.getPassword()))
-                    return user.getUserType();
-                return new String("wrong username or password");
+                    return user;
+                return new User("wrong username or password");
     }
 }
