@@ -7,11 +7,14 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.scene.control.TextField;
+import sample.exceptions.UsernameDoesNotExistException;
 import sample.services.UserService;
 
 import java.io.IOException;
+import java.util.Objects;
 
 public class LoginController {
 
@@ -22,15 +25,37 @@ public class LoginController {
     private TextField passwordField;
     @FXML
     private Button loginButton;
+    @FXML
+    private Text loginErrorText;
 
-    public void loginButtonClicked(ActionEvent event) throws IOException{
-        if(UserService.searchUser(usernameField.getText(), passwordField.getText())){
-            System.out.println("Ai intrat");
-        }
-        else{
-            System.out.println("Mai incearca");
-        }
+    public void loginButtonClicked(ActionEvent event) throws IOException {
+        String userType = UserService.searchUser(usernameField.getText(), passwordField.getText());
+        if(userType.equals("Band")) {
+            Parent registerParent = FXMLLoader.load(getClass().getResource("/fxml/band.fxml"));
+            Scene registerScene = new Scene(registerParent);
 
+            Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+            window.setScene(registerScene);
+            window.show();
+        }
+        else if(userType.equals("Event Manager")){
+            Parent registerParent = FXMLLoader.load(getClass().getResource("/fxml/eventmanager.fxml"));
+            Scene registerScene = new Scene(registerParent);
+
+            Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+            window.setScene(registerScene);
+            window.show();
+        }
+        else if(userType.equals("Participant")){
+            Parent registerParent = FXMLLoader.load(getClass().getResource("/fxml/participant.fxml"));
+            Scene registerScene = new Scene(registerParent);
+
+            Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+            window.setScene(registerScene);
+            window.show();
+        }
+        else if(userType.equals("wrong username or password"))
+            loginErrorText.setText("Wrong username or password");
     }
 
     public void registerButtonClicked(ActionEvent event) throws IOException {
