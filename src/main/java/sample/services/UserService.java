@@ -1,5 +1,6 @@
 package sample.services;
 
+import sample.exceptions.UsernameDoesNotExistException;
 import sample.model.User;
 import sample.exceptions.UsernameAlreadyExistsException;
 import sample.exceptions.CouldNotWriteUsersException;
@@ -72,5 +73,13 @@ public class UserService {
             throw new IllegalStateException("SHA-512 does not exist!");
         }
         return md;
+    }
+
+    public static boolean searchUser(String username, String password){
+        for (User user : users)
+            if (Objects.equals(username, user.getUsername()))
+                if(Objects.equals(encodePassword(username, password), user.getPassword()))
+                        return true;
+        return false;
     }
 }

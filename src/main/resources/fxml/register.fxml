@@ -14,7 +14,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="291.0" prefWidth="679.0" stylesheets="/stylesheets/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.RegisterController">
     <children>
-        <Button fx:id="registerButton" layoutX="237.0" layoutY="252.0" mnemonicParsing="false" onAction="#registerButtonClicked" prefHeight="25.0" prefWidth="205.0" styleClass="button-login" text="Register" textFill="WHITE">
+        <Button fx:id="registerButton" layoutX="251.0" layoutY="256.0" mnemonicParsing="false" onAction="#registerButtonClicked" prefHeight="25.0" prefWidth="177.0" styleClass="button-login" text="Register" textFill="WHITE">
             <font>
                 <Font name="System Bold" size="11.0" />
             </font></Button>
@@ -62,5 +62,10 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Text>
+      <Button fx:id="backButton" layoutX="558.0" layoutY="257.0" mnemonicParsing="false" onAction="#handleBackButton" prefHeight="24.0" prefWidth="62.0" styleClass="button-register" text="Back" textFill="#f8f8f8">
+         <font>
+            <Font name="System Bold" size="11.0" />
+         </font>
+      </Button>
     </children>
 </AnchorPane>

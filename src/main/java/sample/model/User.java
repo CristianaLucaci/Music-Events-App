@@ -101,7 +101,7 @@ public class User {
 
         if (!username.equals(user.username)) return false;
         if (!password.equals(user.password)) return false;
-        return userType.equals(user.userType);
+        return true;
     }
 
     @Override

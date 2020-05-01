@@ -22,11 +22,11 @@
             <font>
                 <Font name="System Bold" size="11.0" />
             </font></Button>
-        <TextField layoutX="72.0" layoutY="138.0" prefHeight="24.0" prefWidth="149.0" promptText="username" styleClass="text-field1">
+        <TextField fx:id="usernameField" layoutX="72.0" layoutY="138.0" prefHeight="24.0" prefWidth="149.0" promptText="username" styleClass="text-field1">
             <font>
                 <Font size="11.0" />
             </font></TextField>
-        <TextField layoutX="71.0" layoutY="169.0" prefHeight="24.0" prefWidth="149.0" promptText="password" styleClass="text-field1">
+        <TextField fx:id="passwordField" layoutX="71.0" layoutY="169.0" prefHeight="24.0" prefWidth="149.0" promptText="password" styleClass="text-field1">
             <font>
                 <Font size="11.0" />
             </font></TextField>
