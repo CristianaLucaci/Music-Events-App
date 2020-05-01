@@ -45,5 +45,10 @@
                 <Font name="System Bold" size="22.0" />
             </font>
         </Text>
+      <Text fx:id="loginErrorText" fill="#ff4040" layoutX="56.0" layoutY="246.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="180.13671875">
+         <font>
+            <Font name="System Bold" size="11.0" />
+         </font>
+      </Text>
     </children>
 </AnchorPane>
