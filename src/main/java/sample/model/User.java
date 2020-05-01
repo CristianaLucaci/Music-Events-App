@@ -32,6 +32,10 @@ public class User {
     public User() {
     }
 
+    public User(String userType) {
+        this.userType = userType;
+    }
+
     public User(String userType, String text1, String text2, String email, String phoneNumber, String username, String password, List<String> genres) {
         this.userType = userType;
         this.text1 = text1;

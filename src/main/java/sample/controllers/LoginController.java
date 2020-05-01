@@ -29,7 +29,7 @@ public class LoginController {
     private Text loginErrorText;
 
     public void loginButtonClicked(ActionEvent event) throws IOException {
-        String userType = UserService.searchUser(usernameField.getText(), passwordField.getText());
+        String userType = UserService.searchUser(usernameField.getText(),passwordField.getText()).getUserType();
         if(userType.equals("Band")) {
             Parent registerParent = FXMLLoader.load(getClass().getResource("/fxml/band.fxml"));
             Scene registerScene = new Scene(registerParent);
