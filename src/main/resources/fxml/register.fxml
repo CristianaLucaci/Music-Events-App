@@ -25,7 +25,7 @@
                 <TextField fx:id="emailField" layoutX="20.0" layoutY="54.0" promptText="email" />
                 <TextField fx:id="phoneNumberField" layoutX="177.0" layoutY="54.0" promptText="Phone Number" />
                 <TextField fx:id="usernameField" layoutX="20.0" layoutY="88.0" promptText="username" />
-                <TextField fx:id="passwordField" layoutX="177.0" layoutY="88.0" promptText="password" />
+            <PasswordField fx:id="passwordField" layoutX="177.0" layoutY="88.0" promptText="password" />
             <AnchorPane fx:id="genresAnchorPane" layoutX="20.0" layoutY="130.0">
                <children>
                       <CheckBox fx:id="jazzCheckBox" layoutX="160.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="56.0" text="Jazz" />
