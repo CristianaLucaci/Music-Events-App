@@ -7,14 +7,20 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.BandController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="/stylesheets/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.BandController">
    <children>
-      <Text layoutX="228.0" layoutY="226.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Band">
+      <Text fx:id="mainText" layoutX="204.0" layoutY="89.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your Events" textAlignment="CENTER" wrappingWidth="192.56640625">
          <font>
-            <Font size="64.0" />
+            <Font size="28.0" />
          </font>
       </Text>
-      <Text fx:id="text" layoutX="90.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text="band" wrappingWidth="123.13671875" />
-      <Button layoutX="300.0" layoutY="321.0" mnemonicParsing="false" onAction="#printCurrentUser" text="Button" />
+      <Text fx:id="text" layoutX="423.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="band" textAlignment="CENTER" wrappingWidth="162.13671875">
+         <font>
+            <Font size="16.0" />
+         </font></Text>
+      <Button layoutX="191.0" layoutY="328.0" mnemonicParsing="false" onAction="#button1Clicked" prefHeight="25.0" prefWidth="218.0" styleClass="button-register" text="Your Events" textFill="WHITE" />
+      <Button layoutX="191.0" layoutY="361.0" mnemonicParsing="false" onAction="#button2Clicked" prefHeight="25.0" prefWidth="218.0" styleClass="button-register" text="New Offers" textFill="WHITE" />
+      <AnchorPane fx:id="offersAnchorPane" layoutX="40.0" layoutY="109.0" prefHeight="200.0" prefWidth="521.0" visible="false" />
+      <AnchorPane fx:id="eventsAnchorPane" layoutX="40.0" layoutY="109.0" prefHeight="200.0" prefWidth="521.0" />
    </children>
 </AnchorPane>
