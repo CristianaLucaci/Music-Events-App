@@ -11,6 +11,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.scene.control.TextField;
 import sample.exceptions.UsernameDoesNotExistException;
+import sample.model.User;
 import sample.services.UserService;
 
 import java.io.IOException;
@@ -28,7 +29,10 @@ public class LoginController {
     @FXML
     private Text loginErrorText;
 
+    private static User currentUser = new User();
+
     public void loginButtonClicked(ActionEvent event) throws IOException {
+        currentUser = UserService.searchUser(usernameField.getText(),passwordField.getText());
         String userType = UserService.searchUser(usernameField.getText(),passwordField.getText()).getUserType();
         if(userType.equals("Band")) {
             Parent registerParent = FXMLLoader.load(getClass().getResource("/fxml/band.fxml"));
@@ -67,4 +71,7 @@ public class LoginController {
         window.show();
     }
 
+    public static User getCurrentUser() {
+        return currentUser;
+    }
 }
