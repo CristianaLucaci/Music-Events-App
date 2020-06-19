@@ -7,13 +7,14 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.BandController">
    <children>
       <Text layoutX="228.0" layoutY="226.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Band">
          <font>
             <Font size="64.0" />
          </font>
       </Text>
+      <Text fx:id="text" layoutX="90.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text="band" wrappingWidth="123.13671875" />
+      <Button layoutX="300.0" layoutY="321.0" mnemonicParsing="false" onAction="#printCurrentUser" text="Button" />
    </children>
 </AnchorPane>
