@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
@@ -7,14 +8,33 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.BandController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="/stylesheets/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.BandController">
    <children>
-      <Text layoutX="228.0" layoutY="226.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Band">
+      <Text fx:id="mainText" layoutX="204.0" layoutY="89.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your Events" textAlignment="CENTER" wrappingWidth="192.56640625">
          <font>
-            <Font size="64.0" />
+            <Font size="28.0" />
          </font>
       </Text>
-      <Text fx:id="text" layoutX="90.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text="band" wrappingWidth="123.13671875" />
-      <Button layoutX="300.0" layoutY="321.0" mnemonicParsing="false" onAction="#printCurrentUser" text="Button" />
+      <Text fx:id="text" layoutX="423.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="band" textAlignment="CENTER" wrappingWidth="162.13671875">
+         <font>
+            <Font size="16.0" />
+         </font></Text>
+      <Button layoutX="191.0" layoutY="328.0" mnemonicParsing="false" onAction="#button1Clicked" prefHeight="25.0" prefWidth="218.0" styleClass="button-register" text="Your Events" textFill="WHITE" />
+      <Button layoutX="191.0" layoutY="361.0" mnemonicParsing="false" onAction="#button2Clicked" prefHeight="25.0" prefWidth="218.0" styleClass="button-register" text="New Offers" textFill="WHITE" />
+      <AnchorPane fx:id="offersAnchorPane" layoutX="40.0" layoutY="109.0" prefHeight="200.0" prefWidth="521.0" visible="false">
+         <children>
+            <Pane fx:id="eventOfferPane" layoutX="300.0" prefHeight="200.0" prefWidth="218.0" visible="false">
+               <children>
+                  <TextArea prefHeight="166.0" prefWidth="218.0" text="Aici vor aparea detaliile evenimentului" />
+                  <Button layoutX="14.0" layoutY="170.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="87.0" styleClass="button-login" stylesheets="@../stylesheets/style.css" text="Accept" textFill="WHITE" />
+                  <Button layoutX="117.0" layoutY="170.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="87.0" styleClass="button-register" stylesheets="@../stylesheets/style.css" text="Decline" textFill="WHITE" />
+               </children>
+            </Pane>
+         </children></AnchorPane>
+      <AnchorPane fx:id="eventsAnchorPane" layoutX="40.0" layoutY="109.0" prefHeight="200.0" prefWidth="521.0">
+         <children>
+            <Text fx:id="eventDetailsText" layoutX="289.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Aici vor aparea detaliile evenimentelor: data, locul, trupele si altele" visible="false" wrappingWidth="218.0" />
+         </children></AnchorPane>
+      <Button layoutX="517.0" layoutY="361.0" mnemonicParsing="false" onAction="#handleBackButton" prefHeight="25.0" prefWidth="57.0" styleClass="button-register" stylesheets="@../stylesheets/style.css" text="Back" textFill="WHITE" />
    </children>
 </AnchorPane>
