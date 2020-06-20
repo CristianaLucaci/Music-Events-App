@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.text.*?>
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.ParticipantController">
    <children>
-      <Text layoutX="184.0" layoutY="219.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Participant" wrappingWidth="231.13671875">
+      <Text fx:id="text" fontSmoothingType="LCD" layoutX="464.0" layoutY="32.0" strokeMiterLimit="8.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Participant" textAlignment="CENTER" wrappingWidth="121.13671875">
          <font>
-            <Font size="48.0" />
+            <Font name="Microsoft Himalaya" size="25.0" />
+         </font>
+      </Text>
+      <AnchorPane layoutX="187.0" layoutY="108.0" prefHeight="200.0" prefWidth="200.0" />
+      <Text fx:id="text1" fontSmoothingType="LCD" layoutX="109.0" layoutY="90.0" strokeMiterLimit="8.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your Events" textAlignment="CENTER" wrappingWidth="156.13671875">
+         <font>
+            <Font name="Microsoft Himalaya" size="42.0" />
          </font>
       </Text>
    </children>
