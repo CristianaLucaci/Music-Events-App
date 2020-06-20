@@ -23,8 +23,7 @@ public class UserServiceTest {
     public static void setupClass() {
         FileSystemService.APPLICATION_FOLDER = ".test-registration-example";
         FileSystemService.initApplicationHomeDirIfNeeded();
-        genres.add("Rock");
-        genres.add("Reggae");
+
     }
 
     @Before
@@ -37,6 +36,8 @@ public class UserServiceTest {
         UserService.loadUsersFromFile();
         assertTrue(Files.exists(UserService.USERS_PATH));
     }
+
+    @Test
     public void testAddOneUser() throws Exception {
         UserService.loadUsersFromFile();
         UserService.addUser("Band", "a", "b", "c","d", "test123", "parola123", genres);
