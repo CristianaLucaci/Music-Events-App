@@ -1,10 +1,15 @@
 package sample.controllers;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.SplitPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 import sample.model.User;
 import javafx.scene.text.Text;
 import javafx.event.ActionEvent;
@@ -89,6 +94,16 @@ public class BandController {
     public void seeEventDetails(String e){
         System.out.println(e);
         eventDetailsText.setVisible(true);
+    }
+
+    @FXML
+    public void handleBackButton(ActionEvent event) throws IOException{
+        Parent registerParent = FXMLLoader.load(getClass().getResource("/fxml/login.fxml"));
+        Scene registerScene = new Scene(registerParent);
+
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        window.setScene(registerScene);
+        window.show();
     }
 
 }

@@ -35,5 +35,6 @@
          <children>
             <Text fx:id="eventDetailsText" layoutX="289.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Aici vor aparea detaliile evenimentelor: data, locul, trupele si altele" visible="false" wrappingWidth="218.0" />
          </children></AnchorPane>
+      <Button layoutX="517.0" layoutY="361.0" mnemonicParsing="false" onAction="#handleBackButton" prefHeight="25.0" prefWidth="57.0" styleClass="button-register" stylesheets="@../stylesheets/style.css" text="Back" textFill="WHITE" />
    </children>
 </AnchorPane>
