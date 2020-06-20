@@ -2,7 +2,9 @@ package sample.controllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.SplitPane;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import sample.model.User;
 import javafx.scene.text.Text;
 import javafx.event.ActionEvent;
@@ -22,6 +24,12 @@ public class BandController {
 
     @FXML
     private AnchorPane offersAnchorPane;
+
+    @FXML
+    private Text eventDetailsText;
+
+    @FXML
+    private Pane eventOfferPane;
 
     private User currentUser;
     private ArrayList<String> events = new ArrayList<String>();
@@ -53,6 +61,7 @@ public class BandController {
             offersAnchorPane.setTopAnchor(c, height);
             offersAnchorPane.setLeftAnchor(c, 0.0);
             offersAnchorPane.setRightAnchor(c, 300.0);
+            c.setOnAction(event -> seeEventOffer(o));
             height = height + 30.0;
             offersAnchorPane.getChildren().add(c);
         }
@@ -62,16 +71,24 @@ public class BandController {
         mainText.setText("Your Events");
         eventsAnchorPane.setVisible(true);
         offersAnchorPane.setVisible(false);
+        eventOfferPane.setVisible(false);
     }
 
     public void button2Clicked(ActionEvent event) throws IOException {
         mainText.setText("New Offers");
         eventsAnchorPane.setVisible(false);
         offersAnchorPane.setVisible(true);
+        eventDetailsText.setVisible(false);
+    }
+
+    public void seeEventOffer(String e){
+        System.out.println(e);
+        eventOfferPane.setVisible(true);
     }
 
     public void seeEventDetails(String e){
         System.out.println(e);
+        eventDetailsText.setVisible(true);
     }
 
 }
