@@ -46,6 +46,6 @@
             <Font name="System Bold" size="11.0" />
          </font>
       </Text>
-      <PasswordField fx:id="passwordField" layoutX="72.0" layoutY="168.0" promptText="password" styleClass="text-field1" />
+      <PasswordField fx:id="passwordField" layoutX="72.0" layoutY="168.0" prefHeight="24.0" prefWidth="149.0" promptText="password" styleClass="text-field1" />
     </children>
 </AnchorPane>
