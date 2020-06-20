@@ -2,6 +2,7 @@ package sample.model;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Objects;
 
 public class Event {
     private String name;
@@ -27,6 +28,18 @@ public class Event {
         this.bands = null;
     }
 
+    public Event(String name, String code, Date date, Double ticketPrice, String location, Integer limitOfParticipants, ArrayList<String> eventType, String description, ArrayList<String> bands){
+        this.name=name;
+        this.code=code;
+        this.date=date;
+        this.ticketPrice=ticketPrice;
+        this.location=location;
+        this.limitOfParticipants=limitOfParticipants;
+        this.eventType=eventType;
+        this.description=description;
+        this.bands=bands;
+    }
+
     //Getters and Setters
     public String getName() { return name; }
     public void setName(String name) { this.name = name; }
@@ -50,5 +63,38 @@ public class Event {
     //Adding a new band to the event
     public void inviteNewBand(String band) {
         bands.add(band);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Event event = (Event) o;
+
+        if (!code.equals(event.code)) return false;
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = name.hashCode();
+        result = 31 * result + code.hashCode();
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        return "Event{" +
+                "name='" + name + '\'' +
+                ", code='" + code + '\'' +
+                ", date=" + date +
+                ", ticketPrice=" + ticketPrice +
+                ", location='" + location + '\'' +
+                ", limitOfParticipants=" + limitOfParticipants +
+                ", eventType=" + eventType +
+                ", description='" + description + '\'' +
+                ", bands=" + bands +
+                '}';
     }
 }
