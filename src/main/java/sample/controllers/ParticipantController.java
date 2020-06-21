@@ -42,6 +42,9 @@ public class ParticipantController {
     private Text descriptionText;
 
     @FXML
+    private Text soldText;
+
+    @FXML
     private Pane detailsPane;
 
 
@@ -88,6 +91,7 @@ public class ParticipantController {
         soldAnchorPane.setVisible(false);
         upcomingEventsAnchorPane.setVisible(false);
         detailsPane.setVisible(false);
+        descriptionText.setVisible(false);
     }
 
     public void button2Clicked(ActionEvent event) throws IOException {
@@ -96,13 +100,15 @@ public class ParticipantController {
         soldAnchorPane.setVisible(false);
         upcomingEventsAnchorPane.setVisible(true);
         descriptionText.setVisible(false);
+        soldText.setVisible(false);
     }
 
     public void button3Clicked(ActionEvent event) throws IOException {
         text1.setText("Sold");
+        descriptionText.setVisible(true);
         soldAnchorPane.setVisible(true);
         eventsAnchorPane.setVisible(false);
-        upcomingEventsAnchorPane.setVisible(true);
+        upcomingEventsAnchorPane.setVisible(false);
         descriptionText.setVisible(false);
     }
 

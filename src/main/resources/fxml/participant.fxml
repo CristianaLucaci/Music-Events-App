@@ -26,17 +26,21 @@
                </children>
             </Pane>
          </children></AnchorPane>
-      <AnchorPane fx:id="eventsAnchorPane" layoutX="40.0" layoutY="119.0" prefHeight="200.0" prefWidth="521.0">
+      <AnchorPane fx:id="eventsAnchorPane" layoutX="50.0" layoutY="109.0" prefHeight="200.0" prefWidth="521.0">
          <children>
             <Text fx:id="descriptionText" layoutX="289.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Aici vor aparea detaliile evenimentelor: data, locul, trupele si altele" visible="false" wrappingWidth="218.0" />
          </children></AnchorPane>
       <Button layoutX="517.0" layoutY="361.0" mnemonicParsing="false" onAction="#backButtonClicked" prefHeight="25.0" prefWidth="57.0" styleClass="button-register" stylesheets="@../stylesheets/style.css" text="Back" textFill="WHITE" />
       <Button layoutX="14.0" layoutY="12.0" mnemonicParsing="false" onAction="#button3Clicked" prefHeight="25.0" prefWidth="140.0" styleClass="button-register" text="View Sold" textFill="WHITE" />
-      <AnchorPane fx:id="soldAnchorPane" layoutX="50.0" layoutY="119.0" prefHeight="200.0" prefWidth="521.0" visible="false">
+      <AnchorPane fx:id="soldAnchorPane" layoutX="50.0" layoutY="119.0" prefHeight="166.0" prefWidth="521.0" visible="false" AnchorPane.bottomAnchor="80.0">
          <children>
-            <TextArea prefHeight="166.0" prefWidth="218.0" text="Amount of money" />
-            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="87.0" styleClass="button-register" stylesheets="@../stylesheets/style.css" text="Add Money" textFill="WHITE" />
-            <Button contentDisplay="RIGHT" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="87.0" styleClass="button-register" stylesheets="@../stylesheets/style.css" text="Retrieve Money" textFill="WHITE" />
+            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="87.0" styleClass="button-register" stylesheets="@../stylesheets/style.css" text="Add Money" textFill="WHITE" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="175.0" />
+            <Button contentDisplay="RIGHT" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="87.0" styleClass="button-register" stylesheets="@../stylesheets/style.css" text="Retrieve Money" textFill="WHITE" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="400.0" AnchorPane.rightAnchor="10.0" />
+            <Text fx:id="soldText" strokeType="OUTSIDE" strokeWidth="0.0" text="Amount of Money" textAlignment="CENTER" wrappingWidth="192.56640625" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="20.0">
+               <font>
+                  <Font size="28.0" />
+               </font>
+            </Text>
          </children>
       </AnchorPane>
    </children>
