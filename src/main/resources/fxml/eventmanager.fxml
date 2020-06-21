@@ -1,138 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Region?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.EventManagerController">
-   <bottom>
-      <HBox alignment="CENTER_RIGHT" spacing="10.0" BorderPane.alignment="CENTER">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="/stylesheets/style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.EventManagerController">
+   <children>
+      <Text fx:id="mainText" layoutX="204.0" layoutY="89.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your Events" textAlignment="CENTER" wrappingWidth="192.56640625">
+         <font>
+            <Font size="28.0" />
+         </font>
+      </Text>
+      <Text fx:id="user" layoutX="423.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="sold" textAlignment="CENTER" wrappingWidth="162.13671875">
+         <font>
+            <Font size="16.0" />
+         </font></Text>
+      <Button layoutX="191.0" layoutY="320.0" mnemonicParsing="false" onAction="#addEventButtonClicked" prefHeight="25.0" prefWidth="218.0" styleClass="button-register" text="Add Event" textFill="WHITE" />
+      <AnchorPane fx:id="eventsAnchorPane" layoutX="40.0" layoutY="109.0" prefHeight="200.0" prefWidth="521.0" />
+      <AnchorPane fx:id="newEventAnchorPane" layoutX="40.0" layoutY="109.0" prefHeight="200.0" prefWidth="521.0" visible="false">
          <children>
-            <Button mnemonicParsing="false" text="Add Event">
-               <padding>
-                  <Insets bottom="7.0" left="7.0" right="7.0" top="7.0" />
-               </padding>
-               <HBox.margin>
-                  <Insets bottom="5.0" left="5.0" right="40.0" top="5.0" />
-               </HBox.margin></Button>
-         </children>
-         <padding>
-            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-         </padding>
-      </HBox>
-   </bottom>
-   <center>
-      <VBox spacing="10.0" BorderPane.alignment="CENTER">
-         <children>
-            <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
-               <children>
-                  <Label text="Event Name" />
-                  <Label layoutX="10.0" layoutY="10.0" text="Participants" />
-                  <Region prefHeight="200.0" prefWidth="150.0" />
-                  <Button mnemonicParsing="false" text="Invite Band">
-                     <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </padding>
-                     <HBox.margin>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </HBox.margin></Button>
-                  <Button layoutX="407.0" layoutY="20.0" mnemonicParsing="false" text="Edit/Delete">
-                     <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </padding>
-                     <HBox.margin>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </HBox.margin></Button>
-               </children>
-               <VBox.margin>
-                  <Insets />
-               </VBox.margin>
-               <padding>
-                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-               </padding>
-            </HBox>
-            <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
-               <children>
-                  <Label text="Event Name" />
-                  <Label layoutX="10.0" layoutY="10.0" text="Participants" />
-                  <Region prefHeight="200.0" prefWidth="150.0" />
-                  <Button mnemonicParsing="false" text="Invite Band">
-                     <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </padding>
-                     <HBox.margin>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </HBox.margin></Button>
-                  <Button mnemonicParsing="false" text="Edit/Delete">
-                     <HBox.margin>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </HBox.margin>
-                     <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </padding></Button>
-               </children>
-               <VBox.margin>
-                  <Insets />
-               </VBox.margin>
-               <padding>
-                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-               </padding>
-            </HBox>
-            <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
-               <children>
-                  <Label text="Event Name" />
-                  <Label layoutX="10.0" layoutY="10.0" text="Participants" />
-                  <Region prefHeight="200.0" prefWidth="150.0" />
-                  <Button mnemonicParsing="false" text="Invite Band">
-                     <HBox.margin>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </HBox.margin>
-                     <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </padding></Button>
-                  <Button mnemonicParsing="false" text="Edit/Delete">
-                     <HBox.margin>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </HBox.margin>
-                     <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </padding></Button>
-               </children>
-               <padding>
-                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-               </padding>
-            </HBox>
-         </children>
-         <BorderPane.margin>
-            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-         </BorderPane.margin>
-         <padding>
-            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-         </padding>
-      </VBox>
-   </center>
-   <top>
-      <HBox alignment="CENTER_RIGHT" BorderPane.alignment="CENTER">
-         <children>
-            <Label layoutX="561.0" layoutY="20.0" text="Sold">
-               <padding>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </padding>
-            </Label>
-            <Region prefHeight="46.0" prefWidth="25.0" />
-            <Label text="0.0">
-               <padding>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </padding>
-               <HBox.margin>
-                  <Insets bottom="10.0" left="10.0" right="50.0" top="10.0" />
-               </HBox.margin>
-            </Label>
-         </children>
-      </HBox>
-   </top>
-</BorderPane>
+            <TextField layoutX="14.0" layoutY="14.0" promptText="Name" />
+            <TextField layoutX="14.0" layoutY="40.0" promptText="Code" />
+            <TextField layoutX="14.0" layoutY="66.0" promptText="Date" />
+            <TextField layoutX="14.0" layoutY="92.0" promptText="Location" />
+            <TextField layoutX="14.0" layoutY="126.0" promptText="Ticket Price" />
+            <TextField layoutX="14.0" layoutY="152.0" promptText="Limit of Participants" />
+            <TextField layoutX="191.0" layoutY="14.0" promptText="Event Type" />
+            <TextField layoutX="191.0" layoutY="40.0" promptText="Bands" />
+            <TextField layoutX="191.0" layoutY="74.0" prefHeight="105.0" prefWidth="171.0" promptText="Description" />
+            <Button layoutX="422.0" layoutY="152.0" mnemonicParsing="false" text="Add Event" />
+         </children></AnchorPane>
+      <Button layoutX="517.0" layoutY="361.0" mnemonicParsing="false" onAction="#handleBackButton" prefHeight="25.0" prefWidth="57.0" styleClass="button-register" stylesheets="@../stylesheets/style.css" text="Back" textFill="WHITE" />
+      <Button layoutX="191.0" layoutY="348.0" mnemonicParsing="false" onAction="#yourEventsButtonClicked" prefHeight="25.0" prefWidth="218.0" styleClass="button-register" text="Your Events" textFill="WHITE" />
+   </children>
+</AnchorPane>
