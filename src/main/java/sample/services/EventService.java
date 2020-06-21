@@ -33,7 +33,7 @@ public class EventService {
         });
     }
 
-    public static void addEvent(String name, String code, Date date, Double ticketPrice, String location, Integer limitOfParticipants, ArrayList<String> eventType, String description, ArrayList<String> bands) throws EventAlreadyExistsException {
+    public static void addEvent(String name, String code, String date, Double ticketPrice, String location, Integer limitOfParticipants, String eventType, String description, ArrayList<String> bands) throws EventAlreadyExistsException {
         checkEventDoesNotAlreadyExist(code);
         events.add(new Event(name, code, date, ticketPrice, location, limitOfParticipants, eventType, description, bands));
         persistEvents();

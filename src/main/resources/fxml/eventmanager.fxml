@@ -6,7 +6,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="/stylesheets/style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.EventManagerController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="/stylesheets/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.EventManagerController">
    <children>
       <Text fx:id="mainText" layoutX="204.0" layoutY="89.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your Events" textAlignment="CENTER" wrappingWidth="192.56640625">
          <font>
@@ -28,7 +28,6 @@
             <TextField layoutX="14.0" layoutY="126.0" promptText="Ticket Price" />
             <TextField layoutX="14.0" layoutY="152.0" promptText="Limit of Participants" />
             <TextField layoutX="191.0" layoutY="14.0" promptText="Event Type" />
-            <TextField layoutX="191.0" layoutY="40.0" promptText="Bands" />
             <TextField layoutX="191.0" layoutY="74.0" prefHeight="105.0" prefWidth="171.0" promptText="Description" />
             <Button layoutX="422.0" layoutY="152.0" mnemonicParsing="false" text="Add Event" />
          </children></AnchorPane>

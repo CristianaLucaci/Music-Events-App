@@ -31,12 +31,6 @@ public class EventManagerController {
     @FXML
     private AnchorPane newEventAnchorPane;
 
-    @FXML
-    private Text eventDetailsText;
-
-    @FXML
-    private Pane eventOfferPane;
-
     private User currentUser;
     private ArrayList<String> events = new ArrayList<String>();
 
@@ -64,19 +58,16 @@ public class EventManagerController {
         mainText.setText("Your Events");
         eventsAnchorPane.setVisible(true);
         newEventAnchorPane.setVisible(false);
-        eventOfferPane.setVisible(false);
     }
 
     public void addEventButtonClicked(ActionEvent event) throws IOException {
-        mainText.setText("New Offers");
+        mainText.setText("New Event");
         eventsAnchorPane.setVisible(false);
         newEventAnchorPane.setVisible(true);
-        eventDetailsText.setVisible(false);
     }
 
     public void seeEventDetails(String e){
         System.out.println(e);
-        eventDetailsText.setVisible(true);
     }
 
     @FXML
