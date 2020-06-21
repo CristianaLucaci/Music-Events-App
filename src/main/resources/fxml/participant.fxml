@@ -1,20 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.ParticipantController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="/stylesheets/style.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.ParticipantController">
    <children>
-      <Text fx:id="text" fontSmoothingType="LCD" layoutX="464.0" layoutY="32.0" strokeMiterLimit="8.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Participant" textAlignment="CENTER" wrappingWidth="121.13671875">
+      <Text fx:id="text1" layoutX="204.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your Events" textAlignment="CENTER" wrappingWidth="192.56640625">
          <font>
-            <Font name="Microsoft Himalaya" size="25.0" />
+            <Font size="28.0" />
          </font>
       </Text>
-      <AnchorPane layoutX="187.0" layoutY="108.0" prefHeight="200.0" prefWidth="200.0" />
-      <Text fx:id="text1" fontSmoothingType="LCD" layoutX="109.0" layoutY="90.0" strokeMiterLimit="8.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your Events" textAlignment="CENTER" wrappingWidth="156.13671875">
+      <Text fx:id="text" layoutX="423.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Participant" textAlignment="CENTER" wrappingWidth="162.13671875">
          <font>
-            <Font name="Microsoft Himalaya" size="42.0" />
-         </font>
-      </Text>
+            <Font size="16.0" />
+         </font></Text>
+      <Button layoutX="191.0" layoutY="328.0" mnemonicParsing="false" onAction="#button1Clicked" prefHeight="25.0" prefWidth="218.0" styleClass="button-register" text="Your Events" textFill="WHITE" />
+      <Button layoutX="191.0" layoutY="361.0" mnemonicParsing="false" onAction="#button2Clicked" prefHeight="25.0" prefWidth="218.0" styleClass="button-register" text="UpcomingEvents" textFill="WHITE" />
+      <AnchorPane fx:id="upcomingEventsAnchorPane" layoutX="40.0" layoutY="109.0" prefHeight="200.0" prefWidth="521.0" visible="false">
+         <children>
+            <Pane fx:id="detailsPane" layoutX="300.0" prefHeight="200.0" prefWidth="218.0" visible="false">
+               <children>
+                  <TextArea prefHeight="166.0" prefWidth="218.0" text="Aici vor aparea detaliile evenimentului" />
+                  <Button layoutX="117.0" layoutY="170.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="87.0" styleClass="button-register" stylesheets="@../stylesheets/style.css" text="Buy Ticket" textFill="WHITE" />
+               </children>
+            </Pane>
+         </children></AnchorPane>
+      <AnchorPane fx:id="eventsAnchorPane" layoutX="40.0" layoutY="119.0" prefHeight="200.0" prefWidth="521.0">
+         <children>
+            <Text fx:id="descriptionText" layoutX="289.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Aici vor aparea detaliile evenimentelor: data, locul, trupele si altele" visible="false" wrappingWidth="218.0" />
+         </children></AnchorPane>
+      <Button layoutX="517.0" layoutY="361.0" mnemonicParsing="false" onAction="#backButtonClicked" prefHeight="25.0" prefWidth="57.0" styleClass="button-register" stylesheets="@../stylesheets/style.css" text="Back" textFill="WHITE" />
+      <Button layoutX="14.0" layoutY="12.0" mnemonicParsing="false" onAction="#button3Clicked" prefHeight="25.0" prefWidth="140.0" styleClass="button-register" text="View Sold" textFill="WHITE" />
+      <AnchorPane fx:id="soldAnchorPane" layoutX="50.0" layoutY="119.0" prefHeight="200.0" prefWidth="521.0" visible="false">
+         <children>
+            <TextArea prefHeight="166.0" prefWidth="218.0" text="Amount of money" />
+            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="87.0" styleClass="button-register" stylesheets="@../stylesheets/style.css" text="Add Money" textFill="WHITE" />
+            <Button contentDisplay="RIGHT" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="87.0" styleClass="button-register" stylesheets="@../stylesheets/style.css" text="Retrieve Money" textFill="WHITE" />
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>
