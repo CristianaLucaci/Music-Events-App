@@ -83,4 +83,5 @@ public class UserService {
                 return new User("wrong username or password");
     }
 
+    public static List<User> getUsers() { return users; }
 }

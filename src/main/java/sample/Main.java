@@ -6,6 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import sample.services.EventService;
+import sample.services.InviteService;
 import sample.services.UserService;
 
 public class Main extends Application {
@@ -15,6 +16,7 @@ public class Main extends Application {
 
         UserService.loadUsersFromFile();
         EventService.loadEventsFromFile();
+        InviteService.loadInvitesFromFile();
 
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/login.fxml"));
         primaryStage.setTitle("Music Events Application");
