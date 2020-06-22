@@ -8,11 +8,14 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import sample.exceptions.EventAlreadyExistsException;
 import sample.model.User;
+import sample.services.EventService;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -20,14 +23,28 @@ import java.util.ArrayList;
 public class EventManagerController {
 
     @FXML
-    private Text user;
+    private TextField eventName;
+    @FXML
+    private TextField eventDate;
+    @FXML
+    private TextField eventCode;
+    @FXML
+    private TextField eventLocation;
+    @FXML
+    private TextField ticketPrice;
+    @FXML
+    private TextField limitOfParticipants;
+    @FXML
+    private TextField eventType;
+    @FXML
+    private TextField description;
 
+    @FXML
+    private Text user;
     @FXML
     private Text mainText;
-
     @FXML
     private AnchorPane eventsAnchorPane;
-
     @FXML
     private AnchorPane newEventAnchorPane;
 
@@ -68,6 +85,32 @@ public class EventManagerController {
 
     public void seeEventDetails(String e){
         System.out.println(e);
+    }
+
+    @FXML
+    public void newEventClicked(ActionEvent event) throws IOException {
+        try {
+            String eventNameStr = eventName.getText();
+            String eventCodeStr = eventCode.getText();
+            String eventDateStr = eventDate.getText();
+            Double price = Double.parseDouble(ticketPrice.getText());
+            String locationStr = eventLocation.getText();
+            Integer limit = Integer.parseInt(limitOfParticipants.getText());
+            String eventTypeStr = eventType.getText();
+            String descriptionStr = description.getText();
+            System.out.println(eventNameStr + eventCodeStr + eventDateStr + price + locationStr + limit + eventTypeStr + descriptionStr);
+
+            EventService.addEvent("eventNameStr", "eventCodeStr", "eventDateStr", 12.0, "locationStr", 12, "eventTypeStr", "descriptionStr");
+
+            mainText.setText("Your Events");
+            eventsAnchorPane.setVisible(true);
+            newEventAnchorPane.setVisible(false);
+        } catch (EventAlreadyExistsException e) {
+            System.out.println("Event already exists");
+        }
+        /*mainText.setText("Your Events");
+        eventsAnchorPane.setVisible(true);
+        newEventAnchorPane.setVisible(false);*/
     }
 
     @FXML

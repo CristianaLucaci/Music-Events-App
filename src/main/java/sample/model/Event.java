@@ -28,16 +28,16 @@ public class Event {
         this.bands = null;
     }
 
-    public Event(String name, String code, String date, Double ticketPrice, String location, Integer limitOfParticipants, String eventType, String description, ArrayList<String> bands){
-        this.name=name;
-        this.code=code;
-        this.date=date;
-        this.ticketPrice=ticketPrice;
-        this.location=location;
-        this.limitOfParticipants=limitOfParticipants;
-        this.eventType=eventType;
-        this.description=description;
-        this.bands=bands;
+    public Event(String name, String code, String date, Double ticketPrice, String location, Integer limitOfParticipants, String eventType, String description){
+        this.name = name;
+        this.code = code;
+        this.date = date;
+        this.ticketPrice = ticketPrice;
+        this.location = location;
+        this.limitOfParticipants = limitOfParticipants;
+        this.eventType = eventType;
+        this.description = description;
+        this.bands = null;
     }
 
     //Getters and Setters

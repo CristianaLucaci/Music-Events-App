@@ -21,15 +21,15 @@
       <AnchorPane fx:id="eventsAnchorPane" layoutX="40.0" layoutY="109.0" prefHeight="200.0" prefWidth="521.0" />
       <AnchorPane fx:id="newEventAnchorPane" layoutX="40.0" layoutY="109.0" prefHeight="200.0" prefWidth="521.0" visible="false">
          <children>
-            <TextField layoutX="14.0" layoutY="14.0" promptText="Name" />
-            <TextField layoutX="14.0" layoutY="40.0" promptText="Code" />
-            <TextField layoutX="14.0" layoutY="66.0" promptText="Date" />
-            <TextField layoutX="14.0" layoutY="92.0" promptText="Location" />
-            <TextField layoutX="14.0" layoutY="126.0" promptText="Ticket Price" />
-            <TextField layoutX="14.0" layoutY="152.0" promptText="Limit of Participants" />
-            <TextField layoutX="191.0" layoutY="14.0" promptText="Event Type" />
-            <TextField layoutX="191.0" layoutY="74.0" prefHeight="105.0" prefWidth="171.0" promptText="Description" />
-            <Button layoutX="422.0" layoutY="152.0" mnemonicParsing="false" text="Add Event" />
+            <TextField fx:id="eventName" layoutX="14.0" layoutY="14.0" promptText="Name" />
+            <TextField fx:id="eventCode" layoutX="14.0" layoutY="40.0" promptText="Code" />
+            <TextField fx:id="eventDate" layoutX="14.0" layoutY="66.0" promptText="Date" />
+            <TextField fx:id="eventLocation" layoutX="14.0" layoutY="92.0" promptText="Location" />
+            <TextField fx:id="ticketPrice" layoutX="14.0" layoutY="126.0" promptText="Ticket Price" />
+            <TextField fx:id="limitOfParticipants" layoutX="14.0" layoutY="152.0" promptText="Limit of Participants" />
+            <TextField fx:id="eventType" layoutX="191.0" layoutY="14.0" promptText="Event Type" />
+            <TextField fx:id="description" alignment="TOP_LEFT" layoutX="191.0" layoutY="74.0" prefHeight="105.0" prefWidth="171.0" promptText="Description" />
+            <Button layoutX="422.0" layoutY="152.0" mnemonicParsing="false" onAction="#newEventClicked" text="Add Event" />
          </children></AnchorPane>
       <Button layoutX="517.0" layoutY="361.0" mnemonicParsing="false" onAction="#handleBackButton" prefHeight="25.0" prefWidth="57.0" styleClass="button-register" stylesheets="@../stylesheets/style.css" text="Back" textFill="WHITE" />
       <Button layoutX="191.0" layoutY="348.0" mnemonicParsing="false" onAction="#yourEventsButtonClicked" prefHeight="25.0" prefWidth="218.0" styleClass="button-register" text="Your Events" textFill="WHITE" />
