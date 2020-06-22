@@ -87,6 +87,17 @@ public class EventManagerController {
         System.out.println(e);
     }
 
+    public void clearFields() {
+        eventName.clear();
+        eventDate.clear();
+        eventCode.clear();
+        eventLocation.clear();
+        ticketPrice.clear();
+        limitOfParticipants.clear();
+        eventType.clear();
+        description.clear();
+    }
+
     @FXML
     public void newEventClicked(ActionEvent event) throws IOException {
         try {
@@ -98,9 +109,10 @@ public class EventManagerController {
             Integer limit = Integer.parseInt(limitOfParticipants.getText());
             String eventTypeStr = eventType.getText();
             String descriptionStr = description.getText();
-            System.out.println(eventNameStr + eventCodeStr + eventDateStr + price + locationStr + limit + eventTypeStr + descriptionStr);
+            //System.out.println(eventNameStr + eventCodeStr + eventDateStr + price + locationStr + limit + eventTypeStr + descriptionStr);
 
-            EventService.addEvent("eventNameStr", "eventCodeStr", "eventDateStr", 12.0, "locationStr", 12, "eventTypeStr", "descriptionStr");
+            EventService.addEvent(eventNameStr, eventCodeStr, eventDateStr, price, locationStr, limit, eventTypeStr, descriptionStr);
+            clearFields();
 
             mainText.setText("Your Events");
             eventsAnchorPane.setVisible(true);
@@ -108,9 +120,6 @@ public class EventManagerController {
         } catch (EventAlreadyExistsException e) {
             System.out.println("Event already exists");
         }
-        /*mainText.setText("Your Events");
-        eventsAnchorPane.setVisible(true);
-        newEventAnchorPane.setVisible(false);*/
     }
 
     @FXML
