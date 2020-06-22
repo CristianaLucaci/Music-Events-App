@@ -29,9 +29,10 @@ public class EventService {
         });
     }
 
-    public static void addEvent(String name, String code, String date, Double ticketPrice, String location, Integer limitOfParticipants, String eventType, String description) throws EventAlreadyExistsException {
+    public static void addEvent(String eventManager, String name, String code, String date, Double ticketPrice, String location, Integer limitOfParticipants, String eventType, String description) throws EventAlreadyExistsException {
         checkEventDoesNotAlreadyExist(code);
-        events.add(new Event(name, code, date, ticketPrice, location, limitOfParticipants, eventType, description));
+        events.add(new Event(eventManager, name, code, date, ticketPrice, location, limitOfParticipants, eventType, description));
+        //System.out.println(events);
         persistEvents();
     }
 
@@ -50,4 +51,6 @@ public class EventService {
             throw new CouldNotWriteEventException();
         }
     }
+
+    public static List<Event> getEvents() { return events; }
 }

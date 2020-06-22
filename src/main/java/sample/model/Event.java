@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.Objects;
 
 public class Event {
+    private String eventManagerName;
     private String name;
     private String code;
     private String date;
@@ -17,6 +18,7 @@ public class Event {
 
     //Empty constructor
     public Event() {
+        this.eventManagerName = "";
         this.name = "";
         this.code = "";
         this.date = null;
@@ -28,7 +30,8 @@ public class Event {
         this.bands = null;
     }
 
-    public Event(String name, String code, String date, Double ticketPrice, String location, Integer limitOfParticipants, String eventType, String description){
+    public Event(String eventManagerName, String name, String code, String date, Double ticketPrice, String location, Integer limitOfParticipants, String eventType, String description){
+        this.eventManagerName = eventManagerName;
         this.name = name;
         this.code = code;
         this.date = date;
@@ -41,6 +44,9 @@ public class Event {
     }
 
     //Getters and Setters
+
+    public String getEventManagerName() { return eventManagerName; }
+    public void setEventManagerName(String eventManagerName) { this.eventManagerName = eventManagerName; }
     public String getName() { return name; }
     public void setName(String name) { this.name = name; }
     public String getCode() { return code; }
@@ -86,13 +92,14 @@ public class Event {
     @Override
     public String toString() {
         return "Event{" +
-                "name='" + name + '\'' +
+                "eventManagerName='" + eventManagerName + '\'' +
+                ", name='" + name + '\'' +
                 ", code='" + code + '\'' +
-                ", date=" + date +
+                ", date='" + date + '\'' +
                 ", ticketPrice=" + ticketPrice +
                 ", location='" + location + '\'' +
                 ", limitOfParticipants=" + limitOfParticipants +
-                ", eventType=" + eventType +
+                ", eventType='" + eventType + '\'' +
                 ", description='" + description + '\'' +
                 ", bands=" + bands +
                 '}';
