@@ -2,7 +2,11 @@ package sample.model;
 
 import java.util.ArrayList;
 import java.util.Date;
+
+import java.util.List;
 import java.util.Objects;
+import java.util.Objects;
+
 
 public class Event {
     private String eventManagerName;
@@ -27,7 +31,7 @@ public class Event {
         this.limitOfParticipants = 0;
         this.eventType = null;
         this.description = "";
-        this.bands = null;
+        this.bands = new ArrayList<>();
     }
 
     public Event(String eventManagerName, String name, String code, String date, Double ticketPrice, String location, Integer limitOfParticipants, String eventType, String description){
@@ -40,10 +44,9 @@ public class Event {
         this.limitOfParticipants = limitOfParticipants;
         this.eventType = eventType;
         this.description = description;
-        this.bands = null;
+        this.bands = new ArrayList<>();
     }
 
-    //Getters and Setters
 
     public String getEventManagerName() { return eventManagerName; }
     public void setEventManagerName(String eventManagerName) { this.eventManagerName = eventManagerName; }
@@ -67,7 +70,7 @@ public class Event {
     public void setBands(ArrayList<String> bands) { this.bands = bands; }
 
     //Adding a new band to the event
-    public void inviteNewBand(String band) {
+    public void addBand(String band) {
         bands.add(band);
     }
 
@@ -104,4 +107,5 @@ public class Event {
                 ", bands=" + bands +
                 '}';
     }
+
 }
