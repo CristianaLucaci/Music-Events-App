@@ -4,20 +4,28 @@ import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import sample.exceptions.BandDoesNotExistException;
 import sample.exceptions.EventAlreadyExistsException;
 import sample.model.Event;
 import sample.model.User;
 import sample.services.EventService;
+import sample.services.InviteService;
 
 import java.io.IOException;
 import java.util.List;
@@ -62,6 +70,7 @@ public class EventManagerController {
     private List<Event> events;
     private Event currentEvent = null;
     private Button currentButtonPressed;
+    private Stage newWindow;
 
     @FXML
     public void initialize() {
@@ -82,6 +91,52 @@ public class EventManagerController {
                 eventsAnchorPane.getChildren().add(b);
             }
         }
+    }
+
+    public void inviteButtonPressed(ActionEvent event) throws IOException {
+
+        Label label = new Label("Invite Band");
+        TextField bandName = new TextField();
+        TextField invitationMessage = new TextField();
+        Button inviteButton = new Button("Send Invite");
+
+        bandName.setPromptText("Band Name");
+        invitationMessage.setPromptText("Message");
+        invitationMessage.promptTextProperty();
+        invitationMessage.setPrefSize(50, 100);
+        inviteButton.setOnAction(e -> sendInviteButtonPressed(inviteButton, bandName.getText(), invitationMessage.getText()));
+
+        VBox vb = new VBox();
+        vb.setPadding(new Insets(10, 50, 50, 50));
+        vb.setSpacing(20);
+        vb.setAlignment(Pos.CENTER);
+        vb.getChildren().addAll(label, bandName, invitationMessage, inviteButton);
+
+        label.setFont(Font.font(20));
+        Scene secondScene = new Scene(vb, 230, 300);
+
+        // New window (Stage)
+        newWindow = new Stage();
+        newWindow.setTitle("Invite");
+        newWindow.setScene(secondScene);
+
+        newWindow.show();
+    }
+
+    public void sendInviteButtonPressed(Button b, String bandName, String message) {
+        try {
+            InviteService.newInvite(currentEvent, bandName, message);
+            newWindow.close();
+
+            eventDetailsArea.setVisible(false);
+            inviteButton.setVisible(false);
+            editButton.setVisible(false);
+            deleteButton.setVisible(false);
+        } catch (BandDoesNotExistException e) {
+            //inviteErrorLabel.setText(e.getMessage());
+            System.out.println(e);
+        }
+
     }
 
     public void deleteButtonPressed(ActionEvent e) {
