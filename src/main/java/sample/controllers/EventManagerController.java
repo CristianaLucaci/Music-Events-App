@@ -8,6 +8,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
@@ -39,6 +40,14 @@ public class EventManagerController {
     private TextField eventType;
     @FXML
     private TextField description;
+    @FXML
+    private TextArea eventDetailsArea;
+    @FXML
+    private Button inviteButton;
+    @FXML
+    private Button editButton;
+    @FXML
+    private Button deleteButton;
 
     @FXML
     private Text user;
@@ -51,6 +60,8 @@ public class EventManagerController {
 
     private User currentUser;
     private List<Event> events;
+    private Event currentEvent = null;
+    private Button currentButtonPressed;
 
     @FXML
     public void initialize() {
@@ -62,7 +73,8 @@ public class EventManagerController {
         for(Event ev : events){
             if (ev.getEventManagerName().equals(currentUser.getUsername())) {
                 Button b = new Button(ev.getName());
-                b.setOnAction(event -> seeEventDetails(ev.getDescription()));
+                b.setOnAction(event -> seeEventDetails(ev.getDescription(), ev, b));
+                b.setPrefSize(20, 5);
                 eventsAnchorPane.setTopAnchor(b, height);
                 eventsAnchorPane.setLeftAnchor(b, 0.0);
                 eventsAnchorPane.setRightAnchor(b, 300.0);
@@ -72,8 +84,27 @@ public class EventManagerController {
         }
     }
 
-    public void seeEventDetails(String e){
-        System.out.println(e);
+    public void deleteButtonPressed(ActionEvent e) {
+        events.remove(currentEvent);
+        EventService.persistEvents();
+
+        eventDetailsArea.setVisible(false);
+        inviteButton.setVisible(false);
+        editButton.setVisible(false);
+        deleteButton.setVisible(false);
+
+        eventsAnchorPane.getChildren().remove(currentButtonPressed);
+        initialize();
+    }
+
+    public void seeEventDetails(String description, Event ev, Button button){
+        currentEvent = ev;
+        currentButtonPressed = button;
+        eventDetailsArea.setText(description);
+        eventDetailsArea.setVisible(true);
+        inviteButton.setVisible(true);
+        editButton.setVisible(true);
+        deleteButton.setVisible(true);
     }
 
     public void yourEventsButtonClicked(ActionEvent event) throws IOException {
@@ -116,6 +147,11 @@ public class EventManagerController {
             EventService.addEvent(eventManagerStr, eventNameStr, eventCodeStr, eventDateStr, price, locationStr, limit, eventTypeStr, descriptionStr);
             clearFields();
             initialize();
+
+            eventDetailsArea.setVisible(false);
+            inviteButton.setVisible(false);
+            editButton.setVisible(false);
+            deleteButton.setVisible(false);
 
             mainText.setText("Your Events");
             eventsAnchorPane.setVisible(true);

@@ -43,7 +43,7 @@ public class EventService {
         }
     }
 
-    private static void persistEvents() {
+    public static void persistEvents() {
         try {
             ObjectMapper objectMapper = new ObjectMapper();
             objectMapper.writerWithDefaultPrettyPrinter().writeValue(EVENTS_PATH.toFile(), events);
