@@ -2,25 +2,27 @@ package sample.model;
 
 import java.util.ArrayList;
 import java.util.Date;
-<<<<<<< Updated upstream
-=======
+
 import java.util.List;
 import java.util.Objects;
->>>>>>> Stashed changes
+import java.util.Objects;
+
 
 public class Event {
+    private String eventManagerName;
     private String name;
     private String code;
-    private Date date;
+    private String date;
     private Double ticketPrice;
     private String location;
     private Integer limitOfParticipants;
-    private ArrayList<String> eventType;
+    private String eventType;
     private String description;
     private ArrayList<String> bands;
 
     //Empty constructor
     public Event() {
+        this.eventManagerName = "";
         this.name = "";
         this.code = "";
         this.date = null;
@@ -32,8 +34,6 @@ public class Event {
         this.bands = new ArrayList<>();
     }
 
-<<<<<<< Updated upstream
-=======
     public Event(String eventManagerName, String name, String code, String date, Double ticketPrice, String location, Integer limitOfParticipants, String eventType, String description){
         this.eventManagerName = eventManagerName;
         this.name = name;
@@ -47,22 +47,23 @@ public class Event {
         this.bands = new ArrayList<>();
     }
 
->>>>>>> Stashed changes
-    //Getters and Setters
+
+    public String getEventManagerName() { return eventManagerName; }
+    public void setEventManagerName(String eventManagerName) { this.eventManagerName = eventManagerName; }
     public String getName() { return name; }
     public void setName(String name) { this.name = name; }
     public String getCode() { return code; }
     public void setCode(String code) { this.code = code; }
-    public Date getDate() { return date; }
-    public void setDate(Date date) { this.date = date; }
+    public String getDate() { return date; }
+    public void setDate(String date) { this.date = date; }
     public Double getTicketPrice() { return ticketPrice; }
     public void setTicketPrice(Double ticketPrice) { this.ticketPrice = ticketPrice; }
     public String getLocation() { return location; }
     public void setLocation(String location) { this.location = location; }
     public Integer getLimitOfParticipants() { return limitOfParticipants; }
     public void setLimitOfParticipants(Integer limitOfParticipants) { this.limitOfParticipants = limitOfParticipants; }
-    public ArrayList<String> getEventType() { return eventType; }
-    public void setEventType(ArrayList<String> eventType) { this.eventType = eventType; }
+    public String getEventType() { return eventType; }
+    public void setEventType(String eventType) { this.eventType = eventType; }
     public String getDescription() { return description; }
     public void setDescription(String description) { this.description = description; }
     public ArrayList<String> getBands() { return bands; }
@@ -72,8 +73,6 @@ public class Event {
     public void addBand(String band) {
         bands.add(band);
     }
-<<<<<<< Updated upstream
-=======
 
     @Override
     public boolean equals(Object o) {
@@ -109,5 +108,4 @@ public class Event {
                 '}';
     }
 
->>>>>>> Stashed changes
 }
