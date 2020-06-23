@@ -45,11 +45,18 @@ public class ParticipantController {
     private Text soldText;
 
     @FXML
+    private Text res;
+
+    @FXML
     private Pane detailsPane;
 
-
+    private static int var = 10;
     private ArrayList<String> events = new ArrayList<String>();
     private ArrayList<String> upcomings = new ArrayList<String>();
+
+    public String getVar(){
+        return " " + var;
+    }
 
     @FXML
     public void initialize(){
@@ -100,11 +107,11 @@ public class ParticipantController {
         soldAnchorPane.setVisible(false);
         upcomingEventsAnchorPane.setVisible(true);
         descriptionText.setVisible(false);
-        soldText.setVisible(false);
     }
 
     public void button3Clicked(ActionEvent event) throws IOException {
         text1.setText("Sold");
+        res.setText(getVar());
         descriptionText.setVisible(true);
         soldAnchorPane.setVisible(true);
         eventsAnchorPane.setVisible(false);
