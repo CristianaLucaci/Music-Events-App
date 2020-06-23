@@ -61,7 +61,7 @@ public class BandController {
 
         double height = 20.0;
         for(Event e:events){
-            if(e.toString().contains(currentUser.getText1())) {
+            if(e.getBands().contains(currentUser.getText1())) {
                 Button b = new Button(e.getName());
                 b.setOnAction(event -> seeEventDetails(e));
                 eventsAnchorPane.setTopAnchor(b, height);
