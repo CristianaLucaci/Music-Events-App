@@ -2,6 +2,11 @@ package sample.model;
 
 import java.util.ArrayList;
 import java.util.Date;
+<<<<<<< Updated upstream
+=======
+import java.util.List;
+import java.util.Objects;
+>>>>>>> Stashed changes
 
 public class Event {
     private String name;
@@ -24,9 +29,25 @@ public class Event {
         this.limitOfParticipants = 0;
         this.eventType = null;
         this.description = "";
-        this.bands = null;
+        this.bands = new ArrayList<>();
     }
 
+<<<<<<< Updated upstream
+=======
+    public Event(String eventManagerName, String name, String code, String date, Double ticketPrice, String location, Integer limitOfParticipants, String eventType, String description){
+        this.eventManagerName = eventManagerName;
+        this.name = name;
+        this.code = code;
+        this.date = date;
+        this.ticketPrice = ticketPrice;
+        this.location = location;
+        this.limitOfParticipants = limitOfParticipants;
+        this.eventType = eventType;
+        this.description = description;
+        this.bands = new ArrayList<>();
+    }
+
+>>>>>>> Stashed changes
     //Getters and Setters
     public String getName() { return name; }
     public void setName(String name) { this.name = name; }
@@ -48,7 +69,45 @@ public class Event {
     public void setBands(ArrayList<String> bands) { this.bands = bands; }
 
     //Adding a new band to the event
-    public void inviteNewBand(String band) {
+    public void addBand(String band) {
         bands.add(band);
     }
+<<<<<<< Updated upstream
+=======
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Event event = (Event) o;
+
+        if (!code.equals(event.code)) return false;
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = name.hashCode();
+        result = 31 * result + code.hashCode();
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        return "Event{" +
+                "eventManagerName='" + eventManagerName + '\'' +
+                ", name='" + name + '\'' +
+                ", code='" + code + '\'' +
+                ", date='" + date + '\'' +
+                ", ticketPrice=" + ticketPrice +
+                ", location='" + location + '\'' +
+                ", limitOfParticipants=" + limitOfParticipants +
+                ", eventType='" + eventType + '\'' +
+                ", description='" + description + '\'' +
+                ", bands=" + bands +
+                '}';
+    }
+
+>>>>>>> Stashed changes
 }
