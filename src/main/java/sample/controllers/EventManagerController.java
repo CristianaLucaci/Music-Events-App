@@ -56,6 +56,10 @@ public class EventManagerController {
     private Button editButton;
     @FXML
     private Button deleteButton;
+    @FXML
+    private Button newEventButton;
+    @FXML
+    private Button saveEditButton;
 
     @FXML
     private Text user;
@@ -91,6 +95,26 @@ public class EventManagerController {
                 eventsAnchorPane.getChildren().add(b);
             }
         }
+    }
+
+    public void saveEditClicked() {
+        mainText.setText("Your Events");
+        eventsAnchorPane.setVisible(true);
+        newEventAnchorPane.setVisible(false);
+        newEventButton.setVisible(true);
+        saveEditButton.setVisible(false);
+        eventDetailsArea.setVisible(false);
+        inviteButton.setVisible(false);
+        editButton.setVisible(false);
+        deleteButton.setVisible(false);
+    }
+
+    public void editButtionPressed(ActionEvent event) {
+        mainText.setText("Edit Event");
+        eventsAnchorPane.setVisible(false);
+        newEventAnchorPane.setVisible(true);
+        newEventButton.setVisible(false);
+        saveEditButton.setVisible(true);
     }
 
     public void inviteButtonPressed(ActionEvent event) throws IOException {
