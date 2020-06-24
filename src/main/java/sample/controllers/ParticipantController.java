@@ -9,6 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
@@ -45,11 +46,42 @@ public class ParticipantController {
     private Text soldText;
 
     @FXML
+    private Text res;
+
+    @FXML
     private Pane detailsPane;
 
+    @FXML
+    private TextField moneyInput;
 
+    private static int var;
     private ArrayList<String> events = new ArrayList<String>();
     private ArrayList<String> upcomings = new ArrayList<String>();
+
+    public String printVar(){
+        return " " + var;
+    }
+    private boolean addMoney(TextField input, String message){
+        try{
+            int money = Integer.parseInt(input.getText());
+            var=var+money;
+            return true;
+        }catch(NumberFormatException e){
+            System.out.println("Error: " + message + " is not a number");
+            return false;
+        }
+    }
+
+    private boolean retrieveMoney(TextField input, String message){
+        try{
+            int money = Integer.parseInt(input.getText());
+            var=var-money;
+            return true;
+        }catch(NumberFormatException e){
+            System.out.println("Error: " + message + " is not a number");
+            return false;
+        }
+    }
 
     @FXML
     public void initialize(){
@@ -100,11 +132,33 @@ public class ParticipantController {
         soldAnchorPane.setVisible(false);
         upcomingEventsAnchorPane.setVisible(true);
         descriptionText.setVisible(false);
-        soldText.setVisible(false);
     }
 
     public void button3Clicked(ActionEvent event) throws IOException {
         text1.setText("Sold");
+        res.setText(printVar());
+        descriptionText.setVisible(true);
+        soldAnchorPane.setVisible(true);
+        eventsAnchorPane.setVisible(false);
+        upcomingEventsAnchorPane.setVisible(false);
+        descriptionText.setVisible(false);
+    }
+
+    public void addMoneyClicked(ActionEvent event) throws IOException{
+        text1.setText("Sold");
+        addMoney(moneyInput, moneyInput.getText());
+        res.setText(printVar());
+        descriptionText.setVisible(true);
+        soldAnchorPane.setVisible(true);
+        eventsAnchorPane.setVisible(false);
+        upcomingEventsAnchorPane.setVisible(false);
+        descriptionText.setVisible(false);
+    }
+
+    public void retrieveMoneyClicked(ActionEvent event) throws IOException{
+        text1.setText("Sold");
+        retrieveMoney(moneyInput, moneyInput.getText());
+        res.setText(printVar());
         descriptionText.setVisible(true);
         soldAnchorPane.setVisible(true);
         eventsAnchorPane.setVisible(false);
