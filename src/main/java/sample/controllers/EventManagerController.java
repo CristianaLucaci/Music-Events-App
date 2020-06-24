@@ -85,6 +85,11 @@ public class EventManagerController {
     public void initialize() {
         currentUser = LoginController.getCurrentUser();
         user.setText("User: " + currentUser.getText2());
+        try {
+            EventService.loadEventsFromFile();
+        } catch (IOException e) {
+            System.out.println("IOException");
+        }
         events = EventService.getEvents();
 
         double height = 20.0;
@@ -243,8 +248,15 @@ public class EventManagerController {
         editButton.setVisible(false);
         deleteButton.setVisible(false);
 
+        currentButtonPressed.setVisible(false);
         eventsAnchorPane.getChildren().remove(currentButtonPressed);
-        initialize();
+        refresh();
+    }
+
+    public void refresh() {
+        mainText.setText("Your Events");
+        eventsAnchorPane.setVisible(false);
+        eventsAnchorPane.setVisible(true);
     }
 
     public void seeEventDetails(String description, Event ev, Button button){
