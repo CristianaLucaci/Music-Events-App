@@ -20,9 +20,11 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import sample.exceptions.BandAlreadyInvitedException;
 import sample.exceptions.BandDoesNotExistException;
 import sample.exceptions.EventAlreadyExistsException;
 import sample.model.Event;
+import sample.model.Invite;
 import sample.model.User;
 import sample.services.EventService;
 import sample.services.InviteService;
@@ -61,6 +63,8 @@ public class EventManagerController {
     private Button newEventButton;
     @FXML
     private Button saveEditButton;
+    @FXML
+    private Text errorMessage;
 
     @FXML
     private Text user;
@@ -81,6 +85,11 @@ public class EventManagerController {
     public void initialize() {
         currentUser = LoginController.getCurrentUser();
         user.setText("User: " + currentUser.getText2());
+        try {
+            EventService.loadEventsFromFile();
+        } catch (IOException e) {
+            System.out.println("IOException");
+        }
         events = EventService.getEvents();
 
         double height = 20.0;
@@ -98,14 +107,15 @@ public class EventManagerController {
         }
     }
 
-    public void saveEditClicked() throws EventAlreadyExistsException{
+    public void saveEditClicked() {
 
         try {
             ArrayList<String> bands = currentEvent.getBands();
+            String eventCodeStr = currentEvent.getCode();
             events.remove(currentEvent);
 
             String eventNameStr = eventName.getText();
-            String eventCodeStr = eventCode.getText();
+
             String eventDateStr = eventDate.getText();
             Double price = Double.parseDouble(ticketPrice.getText());
             String locationStr = eventLocation.getText();
@@ -116,6 +126,16 @@ public class EventManagerController {
             //System.out.println(eventNameStr + eventCodeStr + eventDateStr + price + locationStr + limit + eventTypeStr + descriptionStr);
 
             EventService.addEvent(eventManagerStr, eventNameStr, eventCodeStr, eventDateStr, price, locationStr, limit, eventTypeStr, descriptionStr, bands);
+            List<Invite> invites = InviteService.getInvites();
+            events = EventService.getEvents();
+
+            for (Invite invite : invites) {
+                if (invite.getEvent().getCode().equals(eventCodeStr)) {
+                    invites.remove(invite);
+                    InviteService.newInvite(events.get(events.size()-1), invite.getBandName(), invite.getDetails());
+                }
+            }
+
             clearFields();
             initialize();
 
@@ -127,8 +147,18 @@ public class EventManagerController {
             mainText.setText("Your Events");
             eventsAnchorPane.setVisible(true);
             newEventAnchorPane.setVisible(false);
-        }  catch (EventAlreadyExistsException e) {
-            System.out.println("Event already exists");
+        } catch (EventAlreadyExistsException e) {
+            errorMessage.setText("Error editing the event  Code already exists      Try again");
+            errorMessage.setVisible(true);
+        } catch (NumberFormatException e) {
+            errorMessage.setText("Error editing the event  Wrong field type         Try again");
+            errorMessage.setVisible(true);
+        }  catch (BandDoesNotExistException e) {
+            errorMessage.setText("Error editing the event  Band does not exists     Try again");
+            errorMessage.setVisible(true);
+        } catch (BandAlreadyInvitedException e) {
+            errorMessage.setText("Error editing the event  Band already invited     Try again");
+            errorMessage.setVisible(true);
         }
 
         mainText.setText("Your Events");
@@ -142,9 +172,9 @@ public class EventManagerController {
         deleteButton.setVisible(false);
     }
 
-    public void editButtionPressed(ActionEvent event) {
+    public void editButtonPressed(ActionEvent event) {
         eventName.setText(currentEvent.getName());
-        eventCode.setText(currentEvent.getCode());
+        eventCode.setVisible(false);
         eventDate.setText(currentEvent.getDate());
         ticketPrice.setText(currentEvent.getTicketPrice().toString());
         eventLocation.setText(currentEvent.getLocation());
@@ -198,9 +228,13 @@ public class EventManagerController {
             inviteButton.setVisible(false);
             editButton.setVisible(false);
             deleteButton.setVisible(false);
+            errorMessage.setVisible(false);
         } catch (BandDoesNotExistException e) {
-            //inviteErrorLabel.setText(e.getMessage());
-            System.out.println(e);
+            errorMessage.setText("Error editing the event  Band does not exists     Try again");
+            errorMessage.setVisible(true);
+        } catch (BandAlreadyInvitedException e) {
+            errorMessage.setText("Error editing the event  Band already invited     Try again");
+            errorMessage.setVisible(true);
         }
 
     }
@@ -214,13 +248,21 @@ public class EventManagerController {
         editButton.setVisible(false);
         deleteButton.setVisible(false);
 
+        currentButtonPressed.setVisible(false);
         eventsAnchorPane.getChildren().remove(currentButtonPressed);
-        initialize();
+        refresh();
+    }
+
+    public void refresh() {
+        mainText.setText("Your Events");
+        eventsAnchorPane.setVisible(false);
+        eventsAnchorPane.setVisible(true);
     }
 
     public void seeEventDetails(String description, Event ev, Button button){
         currentEvent = ev;
         currentButtonPressed = button;
+        errorMessage.setVisible(false);
         eventDetailsArea.setText(description);
         eventDetailsArea.setVisible(true);
         inviteButton.setVisible(true);
@@ -281,7 +323,11 @@ public class EventManagerController {
             eventsAnchorPane.setVisible(true);
             newEventAnchorPane.setVisible(false);
         } catch (EventAlreadyExistsException e) {
-            System.out.println("Event already exists");
+            errorMessage.setText("Error editing the event  Code already exists      Try again");
+            errorMessage.setVisible(true);
+        } catch (NumberFormatException e) {
+            errorMessage.setText("Error editing the event  Wrong field type         Try again");
+            errorMessage.setVisible(true);
         }
     }
 
