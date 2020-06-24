@@ -30,8 +30,9 @@ public class InviteService {
         });
     }
 
-    public static void newInvite(Event event, String bandName, String details) throws BandDoesNotExistException {
+    public static void newInvite(Event event, String bandName, String details) throws BandDoesNotExistException, BandAlreadyInvitedException {
         checkBand(bandName);
+        checkEvent(event, bandName);
         invites.add(new Invite(event, bandName, details));
         //System.out.println(event);
         persistInvites();
@@ -45,6 +46,14 @@ public class InviteService {
             }
         }
         throw new BandDoesNotExistException(bandName);
+    }
+
+    public static void checkEvent(Event event, String bandName) throws BandAlreadyInvitedException {
+        if (event.getBands().contains(bandName)) throw new BandAlreadyInvitedException(bandName);
+        for (Invite invite : invites) {
+            if (invite.getBandName().equals(bandName))
+                throw new BandAlreadyInvitedException(bandName);
+        }
     }
 
     public static void persistInvites() {
