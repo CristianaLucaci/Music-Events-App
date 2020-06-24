@@ -7,7 +7,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="/stylesheets/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.EventManagerController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="/stylesheets/style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.EventManagerController">
    <children>
       <Text fx:id="mainText" layoutX="204.0" layoutY="89.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your Events" textAlignment="CENTER" wrappingWidth="192.56640625">
          <font>
@@ -23,7 +23,7 @@
          <children>
             <TextArea fx:id="eventDetailsArea" layoutX="307.0" layoutY="8.0" prefHeight="129.0" prefWidth="200.0" visible="false" />
             <Button fx:id="inviteButton" layoutX="307.0" layoutY="146.0" mnemonicParsing="false" onAction="#inviteButtonPressed" text="Invite" visible="false" />
-            <Button fx:id="editButton" layoutX="385.0" layoutY="146.0" mnemonicParsing="false" onAction="#editButtionPressed" text="Edit" visible="false" />
+            <Button fx:id="editButton" layoutX="385.0" layoutY="146.0" mnemonicParsing="false" onAction="#editButtonPressed" text="Edit" visible="false" />
             <Button fx:id="deleteButton" layoutX="446.0" layoutY="146.0" mnemonicParsing="false" onAction="#deleteButtonPressed" text="Delete" visible="false" />
          </children></AnchorPane>
       <AnchorPane fx:id="newEventAnchorPane" layoutX="40.0" layoutY="109.0" prefHeight="200.0" prefWidth="521.0" visible="false">
@@ -36,10 +36,15 @@
             <TextField fx:id="limitOfParticipants" layoutX="14.0" layoutY="152.0" promptText="Limit of Participants" />
             <TextField fx:id="eventType" layoutX="191.0" layoutY="14.0" promptText="Event Type" />
             <TextField fx:id="description" alignment="TOP_LEFT" layoutX="191.0" layoutY="74.0" prefHeight="105.0" prefWidth="171.0" promptText="Description" />
-            <Button fx:id="newEventButton" layoutX="422.0" layoutY="152.0" mnemonicParsing="false" visible="true" onAction="#newEventClicked" text="Add Event" />
-            <Button fx:id="saveEditButton" layoutX="422.0" layoutY="152.0" mnemonicParsing="false" visible="false" onAction="#saveEditClicked" text="Save Edit" />
+            <Button fx:id="newEventButton" layoutX="422.0" layoutY="152.0" mnemonicParsing="false" onAction="#newEventClicked" text="Add Event" visible="true" />
+            <Button fx:id="saveEditButton" layoutX="422.0" layoutY="152.0" mnemonicParsing="false" onAction="#saveEditClicked" text="Save Edit" visible="false" />
          </children></AnchorPane>
       <Button layoutX="517.0" layoutY="361.0" mnemonicParsing="false" onAction="#handleBackButton" prefHeight="25.0" prefWidth="57.0" styleClass="button-register" stylesheets="@../stylesheets/style.css" text="Back" textFill="WHITE" />
       <Button layoutX="191.0" layoutY="348.0" mnemonicParsing="false" onAction="#yourEventsButtonClicked" prefHeight="25.0" prefWidth="218.0" styleClass="button-register" text="Your Events" textFill="WHITE" />
+      <Text fx:id="errorMessage" fill="RED" layoutX="40.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Error editing the event  Wrong field type" visible="false" wrappingWidth="182.13671875">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>

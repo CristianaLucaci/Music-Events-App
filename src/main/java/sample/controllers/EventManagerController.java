@@ -61,6 +61,8 @@ public class EventManagerController {
     private Button newEventButton;
     @FXML
     private Button saveEditButton;
+    @FXML
+    private Text errorMessage;
 
     @FXML
     private Text user;
@@ -98,7 +100,7 @@ public class EventManagerController {
         }
     }
 
-    public void saveEditClicked() throws EventAlreadyExistsException{
+    public void saveEditClicked() throws EventAlreadyExistsException, NumberFormatException{
 
         try {
             ArrayList<String> bands = currentEvent.getBands();
@@ -127,8 +129,11 @@ public class EventManagerController {
             mainText.setText("Your Events");
             eventsAnchorPane.setVisible(true);
             newEventAnchorPane.setVisible(false);
-        }  catch (EventAlreadyExistsException e) {
+        } catch (EventAlreadyExistsException e) {
             System.out.println("Event already exists");
+        } catch (NumberFormatException e) {
+            errorMessage.setVisible(true);
+            editButtonPressed(new ActionEvent());
         }
 
         mainText.setText("Your Events");
@@ -142,7 +147,7 @@ public class EventManagerController {
         deleteButton.setVisible(false);
     }
 
-    public void editButtionPressed(ActionEvent event) {
+    public void editButtonPressed(ActionEvent event) {
         eventName.setText(currentEvent.getName());
         eventCode.setText(currentEvent.getCode());
         eventDate.setText(currentEvent.getDate());
