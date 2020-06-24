@@ -28,6 +28,7 @@ import sample.services.EventService;
 import sample.services.InviteService;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class EventManagerController {
@@ -56,6 +57,10 @@ public class EventManagerController {
     private Button editButton;
     @FXML
     private Button deleteButton;
+    @FXML
+    private Button newEventButton;
+    @FXML
+    private Button saveEditButton;
 
     @FXML
     private Text user;
@@ -91,6 +96,67 @@ public class EventManagerController {
                 eventsAnchorPane.getChildren().add(b);
             }
         }
+    }
+
+    public void saveEditClicked() throws EventAlreadyExistsException{
+
+        try {
+            ArrayList<String> bands = currentEvent.getBands();
+            events.remove(currentEvent);
+
+            String eventNameStr = eventName.getText();
+            String eventCodeStr = eventCode.getText();
+            String eventDateStr = eventDate.getText();
+            Double price = Double.parseDouble(ticketPrice.getText());
+            String locationStr = eventLocation.getText();
+            Integer limit = Integer.parseInt(limitOfParticipants.getText());
+            String eventTypeStr = eventType.getText();
+            String descriptionStr = description.getText();
+            String eventManagerStr = currentUser.getUsername();
+            //System.out.println(eventNameStr + eventCodeStr + eventDateStr + price + locationStr + limit + eventTypeStr + descriptionStr);
+
+            EventService.addEvent(eventManagerStr, eventNameStr, eventCodeStr, eventDateStr, price, locationStr, limit, eventTypeStr, descriptionStr, bands);
+            clearFields();
+            initialize();
+
+            eventDetailsArea.setVisible(false);
+            inviteButton.setVisible(false);
+            editButton.setVisible(false);
+            deleteButton.setVisible(false);
+
+            mainText.setText("Your Events");
+            eventsAnchorPane.setVisible(true);
+            newEventAnchorPane.setVisible(false);
+        }  catch (EventAlreadyExistsException e) {
+            System.out.println("Event already exists");
+        }
+
+        mainText.setText("Your Events");
+        eventsAnchorPane.setVisible(true);
+        newEventAnchorPane.setVisible(false);
+        newEventButton.setVisible(true);
+        saveEditButton.setVisible(false);
+        eventDetailsArea.setVisible(false);
+        inviteButton.setVisible(false);
+        editButton.setVisible(false);
+        deleteButton.setVisible(false);
+    }
+
+    public void editButtionPressed(ActionEvent event) {
+        eventName.setText(currentEvent.getName());
+        eventCode.setText(currentEvent.getCode());
+        eventDate.setText(currentEvent.getDate());
+        ticketPrice.setText(currentEvent.getTicketPrice().toString());
+        eventLocation.setText(currentEvent.getLocation());
+        limitOfParticipants.setText(currentEvent.getLimitOfParticipants().toString());
+        eventType.setText(currentEvent.getEventType());
+        description.setText(currentEvent.getDescription());
+
+        mainText.setText("Edit Event");
+        eventsAnchorPane.setVisible(false);
+        newEventAnchorPane.setVisible(true);
+        newEventButton.setVisible(false);
+        saveEditButton.setVisible(true);
     }
 
     public void inviteButtonPressed(ActionEvent event) throws IOException {
@@ -172,6 +238,8 @@ public class EventManagerController {
         mainText.setText("New Event");
         eventsAnchorPane.setVisible(false);
         newEventAnchorPane.setVisible(true);
+        newEventButton.setVisible(true);
+        saveEditButton.setVisible(false);
     }
 
     public void clearFields() {
@@ -197,9 +265,10 @@ public class EventManagerController {
             String eventTypeStr = eventType.getText();
             String descriptionStr = description.getText();
             String eventManagerStr = currentUser.getUsername();
+            ArrayList<String> emptyBandArray = new ArrayList<String>();
             //System.out.println(eventNameStr + eventCodeStr + eventDateStr + price + locationStr + limit + eventTypeStr + descriptionStr);
 
-            EventService.addEvent(eventManagerStr, eventNameStr, eventCodeStr, eventDateStr, price, locationStr, limit, eventTypeStr, descriptionStr);
+            EventService.addEvent(eventManagerStr, eventNameStr, eventCodeStr, eventDateStr, price, locationStr, limit, eventTypeStr, descriptionStr, emptyBandArray);
             clearFields();
             initialize();
 

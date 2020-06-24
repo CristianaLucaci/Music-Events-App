@@ -34,7 +34,7 @@ public class Event {
         this.bands = new ArrayList<>();
     }
 
-    public Event(String eventManagerName, String name, String code, String date, Double ticketPrice, String location, Integer limitOfParticipants, String eventType, String description){
+    public Event(String eventManagerName, String name, String code, String date, Double ticketPrice, String location, Integer limitOfParticipants, String eventType, String description, ArrayList<String> bands){
         this.eventManagerName = eventManagerName;
         this.name = name;
         this.code = code;
@@ -44,7 +44,7 @@ public class Event {
         this.limitOfParticipants = limitOfParticipants;
         this.eventType = eventType;
         this.description = description;
-        this.bands = new ArrayList<>();
+        this.bands = bands;
     }
 
 
