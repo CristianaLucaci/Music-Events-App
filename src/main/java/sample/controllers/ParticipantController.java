@@ -1,5 +1,6 @@
 package sample.controllers;
 
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -14,6 +15,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 import sample.model.User;
@@ -164,6 +166,19 @@ public class ParticipantController {
         eventsAnchorPane.setVisible(false);
         upcomingEventsAnchorPane.setVisible(false);
         descriptionText.setVisible(false);
+    }
+
+    public void buyTicketClicked(ActionEvent event)throws IOException{
+        Stage window=new Stage();
+
+        //Block events to other windows
+        window.initModality(Modality.APPLICATION_MODAL);
+        window.setTitle("BuyTicket");
+
+        Parent alertParent = FXMLLoader.load(getClass().getResource("/fxml/alertbox.fxml"));
+        Scene alertScene = new Scene(alertParent);
+        window.setScene(alertScene);
+        window.showAndWait();
     }
 
     public void seeUpcomingEvent(String e){
