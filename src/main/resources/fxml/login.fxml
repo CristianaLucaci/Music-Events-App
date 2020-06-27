@@ -23,9 +23,7 @@
                 <Font name="System Bold" size="11.0" />
             </font></Button>
         <TextField fx:id="usernameField" layoutX="72.0" layoutY="138.0" prefHeight="24.0" prefWidth="149.0" promptText="username" styleClass="text-field1">
-            <font>
-                <Font size="11.0" />
-            </font></TextField>
+        </TextField>
         <ImageView blendMode="SRC_ATOP" fitHeight="291.0" fitWidth="424.0" layoutX="234.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@../stylesheets/p12_1.jpg" />
@@ -46,6 +44,6 @@
             <Font name="System Bold" size="11.0" />
          </font>
       </Text>
-      <PasswordField fx:id="passwordField" layoutX="72.0" layoutY="168.0" promptText="password" styleClass="text-field1" />
+      <PasswordField fx:id="passwordField" layoutX="72.0" layoutY="168.0" prefHeight="24.0" prefWidth="149.0" promptText="password" styleClass="text-field1" />
     </children>
 </AnchorPane>

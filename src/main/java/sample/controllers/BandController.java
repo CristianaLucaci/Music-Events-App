@@ -10,11 +10,20 @@ import javafx.scene.control.SplitPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import sample.model.Event;
+import sample.model.Invitation;
+import sample.model.Invite;
 import sample.model.User;
 import javafx.scene.text.Text;
 import javafx.event.ActionEvent;
+import sample.services.EventService;
+import sample.services.InviteService;
+import javafx.scene.control.TextArea;
+
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class BandController {
 
@@ -31,44 +40,49 @@ public class BandController {
     private AnchorPane offersAnchorPane;
 
     @FXML
-    private Text eventDetailsText;
+    private TextArea eventDetailsText;
+
+    @FXML
+    private TextArea offerDetailsText;
 
     @FXML
     private Pane eventOfferPane;
 
     private User currentUser;
-    private ArrayList<String> events = new ArrayList<String>();
-    private ArrayList<String> offers = new ArrayList<String>();
+    private List<Event> events;
+    private List<Invite> offers;
 
     @FXML
     public void initialize() {
         currentUser = LoginController.getCurrentUser();
-        text.setText("User: " + currentUser.getText2());
-        events.add("Out Of Doors 2020");
-        events.add("Awake");
-        events.add("Vest Fest");
-        events.add("Jazz Garana");
-        offers.add("Untold");
-        offers.add("Custom");
+        text.setText("User: " + currentUser.getText1());
+        events = EventService.getEvents();
+        offers = InviteService.getInvites();
+
         double height = 20.0;
-        for(String e:events){
-            Button b = new Button(e);
-            b.setOnAction(event -> seeEventDetails(e));
-            eventsAnchorPane.setTopAnchor(b, height);
-            eventsAnchorPane.setLeftAnchor(b, 0.0);
-            eventsAnchorPane.setRightAnchor(b, 300.0);
-            height = height + 30.0;
-            eventsAnchorPane.getChildren().add(b);
+        for(Event e:events){
+            if(e.toString().contains(currentUser.getText1())) {
+                Button b = new Button(e.getName());
+                b.setOnAction(event -> seeEventDetails(e));
+                eventsAnchorPane.setTopAnchor(b, height);
+                eventsAnchorPane.setLeftAnchor(b, 0.0);
+                eventsAnchorPane.setRightAnchor(b, 300.0);
+                height = height + 30.0;
+                eventsAnchorPane.getChildren().add(b);
+                System.out.println(e.getName());
+            }
         }
         height = 20.0;
-        for(String o:offers){
-            Button c = new Button(o);
-            offersAnchorPane.setTopAnchor(c, height);
-            offersAnchorPane.setLeftAnchor(c, 0.0);
-            offersAnchorPane.setRightAnchor(c, 300.0);
-            c.setOnAction(event -> seeEventOffer(o));
-            height = height + 30.0;
-            offersAnchorPane.getChildren().add(c);
+        for(Invite o:offers){
+            if(o.getBandName().equals(currentUser.getText1())) {
+                Button c = new Button(o.getEvent().getName());
+                offersAnchorPane.setTopAnchor(c, height);
+                offersAnchorPane.setLeftAnchor(c, 0.0);
+                offersAnchorPane.setRightAnchor(c, 300.0);
+                c.setOnAction(event -> seeEventOffer(o));
+                height = height + 30.0;
+                offersAnchorPane.getChildren().add(c);
+            }
         }
     }
 
@@ -86,13 +100,13 @@ public class BandController {
         eventDetailsText.setVisible(false);
     }
 
-    public void seeEventOffer(String e){
-        System.out.println(e);
+    public void seeEventOffer(Invite o){
         eventOfferPane.setVisible(true);
+        offerDetailsText.setText(o.getEvent().getName() + "\n" + o.getDetails());
     }
 
-    public void seeEventDetails(String e){
-        System.out.println(e);
+    public void seeEventDetails(Event e){
+        eventDetailsText.setText("Nume eveniment: " + e.getName() + "\n" + "Organizator: " + e.getEventManagerName() + "\n" + "Descriere: " + e.getDescription());
         eventDetailsText.setVisible(true);
     }
 
@@ -104,6 +118,50 @@ public class BandController {
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(registerScene);
         window.show();
+    }
+
+    @FXML
+    public void acceptInvitation(ActionEvent event) throws IOException{
+        String[] details = offerDetailsText.getText().split("\n", 2);
+        String eventName = details[0];
+        for(Event ev:events){
+            if(ev.getName().equals(eventName)) {
+                ev.addBand(currentUser.getText1());
+                for(Iterator<Invite> it = offers.iterator(); it.hasNext();) {
+                    Invite invite = it.next();
+                    if (invite.getBandName().equals(currentUser.getText1()) && invite.getEvent().getName().equals(eventName)) {
+                        it.remove();
+                        offersAnchorPane.getChildren().removeIf(n -> n instanceof Button);
+                        eventOfferPane.setVisible(false);
+                    }
+                }
+                EventService.persistEvents();
+                InviteService.persistInvites();
+                initialize();
+            }
+        }
+
+    }
+
+    @FXML
+    public void declineInvitation(ActionEvent event) throws IOException{
+        String[] details = offerDetailsText.getText().split("\n", 2);
+        String eventName = details[0];
+        for(Event ev:events){
+            if(ev.getName().equals(eventName)) {
+                for(Iterator<Invite> it = offers.iterator(); it.hasNext();) {
+                    Invite invite = it.next();
+                    if (invite.getBandName().equals(currentUser.getText1()) && invite.getEvent().getName().equals(eventName)) {
+                        it.remove();
+                        offersAnchorPane.getChildren().removeIf(n -> n instanceof Button);
+                        eventOfferPane.setVisible(false);
+                    }
+                }
+                InviteService.persistInvites();
+                initialize();
+            }
+        }
+
     }
 
 }
