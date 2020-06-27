@@ -1,25 +1,27 @@
 package sample.controllers;
 
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ListView;
-import javafx.scene.control.SelectionMode;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.Window;
+import sample.model.Event;
 import sample.model.User;
+import sample.services.EventService;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class ParticipantController {
 
@@ -43,6 +45,9 @@ public class ParticipantController {
     private Text descriptionText;
 
     @FXML
+    private TextArea textEv;
+
+    @FXML
     private Text soldText;
 
     @FXML
@@ -55,8 +60,8 @@ public class ParticipantController {
     private TextField moneyInput;
 
     private static int var;
-    private ArrayList<String> events = new ArrayList<String>();
-    private ArrayList<String> upcomings = new ArrayList<String>();
+    private List<Event> events;
+    private List<Event> upcomings;
 
     public String printVar(){
         return " " + var;
@@ -87,35 +92,21 @@ public class ParticipantController {
     public void initialize(){
         currentUser = LoginController.getCurrentUser();
         text.setText("User: " + currentUser.getText2());
-        events.add("Out Of Doors 2020");
-        events.add("Awake");
-        events.add("Vest Fest");
-        events.add("Jazz Garana");
-        upcomings.add("Untold");
-        upcomings.add("Custom");
+        upcomings= EventService.getEvents();
+
         double height = 20.0;
-        for(String e:events){
-            Button b = new Button(e);
-            b.setOnAction(event -> seeEvent(e));
-            eventsAnchorPane.setTopAnchor(b, height);
-            eventsAnchorPane.setLeftAnchor(b, 0.0);
-            eventsAnchorPane.setRightAnchor(b, 300.0);
+        for(Event e:upcomings){
+            Button b = new Button(e.getName());
+            b.setOnAction(event -> seeUpcomingEvent(e));
+            upcomingEventsAnchorPane.setTopAnchor(b, height);
+            upcomingEventsAnchorPane.setLeftAnchor(b, 0.0);
+            upcomingEventsAnchorPane.setRightAnchor(b, 300.0);
             height = height + 30.0;
-            eventsAnchorPane.getChildren().add(b);
-        }
-        height = 20.0;
-        for(String o:upcomings){
-            Button c = new Button(o);
-            upcomingEventsAnchorPane.setTopAnchor(c, height);
-            upcomingEventsAnchorPane.setLeftAnchor(c, 0.0);
-            upcomingEventsAnchorPane.setRightAnchor(c, 300.0);
-            c.setOnAction(event -> seeUpcomingEvent(o));
-            height = height + 30.0;
-            upcomingEventsAnchorPane.getChildren().add(c);
+            upcomingEventsAnchorPane.getChildren().add(b);
+            System.out.println(e.getName());
         }
     }
 
-    ListView<String> listView;
 
     public void button1Clicked(ActionEvent event) throws IOException {
         text1.setText("Your Events");
@@ -166,14 +157,28 @@ public class ParticipantController {
         descriptionText.setVisible(false);
     }
 
-    public void seeUpcomingEvent(String e){
-        System.out.println(e);
-        detailsPane.setVisible(true);
+    public void buyTicketClicked(ActionEvent event)throws IOException{
+        Stage window=new Stage();
+
+        //Block events to other windows
+        window.initModality(Modality.APPLICATION_MODAL);
+        window.setTitle("BuyTicket");
+
+        Parent alertParent = FXMLLoader.load(getClass().getResource("/fxml/alertbox.fxml"));
+        Scene alertScene = new Scene(alertParent);
+        window.setScene(alertScene);
+        window.showAndWait();
     }
 
     public void seeEvent(String e){
         System.out.println(e);
-        descriptionText.setVisible(true);
+        detailsPane.setVisible(true);
+    }
+
+    public void seeUpcomingEvent(Event e){
+        detailsPane.setVisible(true);
+       textEv.setText("Nume eveniment: "+e.getName()+"\n" + "Organizator: " + e.getEventManagerName() + "\n" + "Descriere: " + e.getDescription());
+
     }
 
     @FXML
