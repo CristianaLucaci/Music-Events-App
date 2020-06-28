@@ -106,7 +106,7 @@ public class BandController {
     }
 
     public void seeEventDetails(Event e){
-        eventDetailsText.setText("Nume eveniment: " + e.getName() + "\n" + "Organizator: " + e.getEventManagerName() + "\n" + "Descriere: " + e.getDescription());
+        eventDetailsText.setText("Nume eveniment: " + e.getName() + "\n" + "Organizator: " + e.getEventManagerName() + "\n" + "Descriere: " + e.getDescription() + "\nTrupe: " + e.getBands() + "\nData: " + e.getDate());
         eventDetailsText.setVisible(true);
     }
 

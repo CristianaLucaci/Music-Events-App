@@ -51,8 +51,9 @@ public class InviteService {
     public static void checkEvent(Event event, String bandName) throws BandAlreadyInvitedException {
         if (event.getBands().contains(bandName)) throw new BandAlreadyInvitedException(bandName);
         for (Invite invite : invites) {
-            if (invite.getBandName().equals(bandName))
-                throw new BandAlreadyInvitedException(bandName);
+            if(invite.getEvent().getCode().equals(event.getCode()))
+                if (invite.getBandName().equals(bandName))
+                    throw new BandAlreadyInvitedException(bandName);
         }
     }
 
