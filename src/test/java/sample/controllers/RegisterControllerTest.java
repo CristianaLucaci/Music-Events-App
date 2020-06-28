@@ -1,6 +1,7 @@
 package sample.controllers;
 
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.PasswordField;
@@ -28,7 +29,7 @@ class RegisterControllerTest extends ApplicationTest {
     public static final String TEXT2 = "ASDF";
     public static final String EMAIL = "email";
     public static final String PHONE = "23542354235";
-    public static final String TEST_USER = "testUser";
+    public static final String TEST_USER = "testUser000";
     public static final String TEST_PASSWORD = "testPassword";
     public static List<String> GENRES = new ArrayList<>();
     private RegisterController controller;
@@ -67,8 +68,9 @@ class RegisterControllerTest extends ApplicationTest {
     }
 
     @Test
-    public void registerButtonClickedTest() throws IOException {
-        controller.registerButtonClicked2();
+    public void registerButtonClickedTest() throws  IOException{
+        ActionEvent event = new ActionEvent();
+        controller.registerButtonClicked(event);
         assertEquals(1, UserService.getUsers().size());
     }
 

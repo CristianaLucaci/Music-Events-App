@@ -59,7 +59,7 @@ public class UserServiceTest {
         UserService.loadUsersFromFile();
         UserService.addUser("Band", "a", "b", "c","d", "test124", "parola123", genres);
         assertNotNull(UserService.users);
-        UserService.checkUserDoesNotAlreadyExist("test1");
+        UserService.checkUserDoesNotAlreadyExist("test124");
     }
 
     @Test

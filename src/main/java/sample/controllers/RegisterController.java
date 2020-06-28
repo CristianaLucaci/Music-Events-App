@@ -134,26 +134,14 @@ public class RegisterController {
     public void registerButtonClicked(ActionEvent event) throws IOException {
 
         try {
-            handleGenreCheckBoxes();
+            //handleGenreCheckBoxes();
             UserService.addUser(userType, textField1.getText(), textField2.getText(), emailField.getText(), phoneNumberField.getText(), usernameField.getText(), passwordField.getText(), genres);
-            Parent registerParent = FXMLLoader.load(getClass().getResource("/fxml/login.fxml"));
+            /*Parent registerParent = FXMLLoader.load(getClass().getResource("/fxml/login.fxml"));
             Scene registerScene = new Scene(registerParent);
 
             Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
             window.setScene(registerScene);
-            window.show();
-        } catch(UsernameAlreadyExistsException e){
-            registrationMessage.setText(e.getMessage());
-        }
-
-    }
-
-    @FXML
-    public void registerButtonClicked2() throws IOException {
-
-        try {
-            //handleGenreCheckBoxes();
-            UserService.addUser(userType, textField1.getText(), textField2.getText(), emailField.getText(), phoneNumberField.getText(), usernameField.getText(), passwordField.getText(), genres);
+            window.show();*/
         } catch(UsernameAlreadyExistsException e){
             registrationMessage.setText(e.getMessage());
         }
