@@ -13,7 +13,9 @@ import java.io.IOException;
 
 public class AlertBoxController {
 
-    public boolean yesButtonClicked(javafx.event.ActionEvent event) throws IOException {
+    public static boolean res=false;
+
+    public void yesButtonClicked(javafx.event.ActionEvent event) throws IOException {
 
 
         Parent alertParent = FXMLLoader.load(getClass().getResource("/fxml/alertbox.fxml"));
@@ -23,10 +25,10 @@ public class AlertBoxController {
         window.setScene(alertScene);
         window.close();
 
-        return true;
+        res=true;
     }
 
-    public boolean noButtonClicked(javafx.event.ActionEvent event) throws IOException {
+    public void noButtonClicked(javafx.event.ActionEvent event) throws IOException {
 
 
         Parent alertParent = FXMLLoader.load(getClass().getResource("/fxml/alertbox.fxml"));
@@ -36,6 +38,10 @@ public class AlertBoxController {
         window.setScene(alertScene);
         window.close();
 
-        return false;
+        res=false;
+    }
+
+    public static boolean getRes() {
+        return res;
     }
 }
