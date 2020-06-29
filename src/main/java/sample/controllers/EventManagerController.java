@@ -84,7 +84,7 @@ public class EventManagerController {
     @FXML
     public void initialize() {
         currentUser = LoginController.getCurrentUser();
-        user.setText("User: " + currentUser.getText2());
+        user.setText("User: " + currentUser.getText1());
         try {
             EventService.loadEventsFromFile();
         } catch (IOException e) {
