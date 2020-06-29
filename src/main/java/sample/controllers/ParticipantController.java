@@ -171,7 +171,6 @@ public class ParticipantController {
 
         if(AlertBoxController.getRes()){
             String[] details = textEv.getText().split("\n", 2);
-            events=details[0];
 
         }
     }
