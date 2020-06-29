@@ -131,7 +131,7 @@ public class RegisterController {
     }
 
     @FXML
-    public void registerButtonClicked(ActionEvent event) throws IOException {
+    public void registerButtonClicked(){
 
         try {
             //handleGenreCheckBoxes();

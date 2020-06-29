@@ -1,11 +1,6 @@
 package sample.controllers;
 
-import javafx.event.ActionEvent;
-import javafx.event.Event;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.text.Text;
 import org.apache.commons.io.FileUtils;
 import org.junit.Before;
@@ -14,14 +9,13 @@ import org.junit.jupiter.api.Test;
 import org.testfx.framework.junit.ApplicationTest;
 import sample.services.FileSystemService;
 import sample.services.UserService;
+import sample.controllers.*;
 
-import java.io.IOException;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class RegisterControllerTest extends ApplicationTest {
 
@@ -57,6 +51,7 @@ class RegisterControllerTest extends ApplicationTest {
         controller.textField2 = new TextField();
         controller.emailField = new TextField();
         controller.phoneNumberField = new TextField();
+        controller.registerButton = new Button();
 
         controller.textField1.setText(TEXT1);
         controller.textField2.setText(TEXT2);
@@ -68,10 +63,9 @@ class RegisterControllerTest extends ApplicationTest {
     }
 
     @Test
-    public void registerButtonClickedTest() throws  IOException{
-        ActionEvent event = new ActionEvent();
-        controller.registerButtonClicked(event);
-        assertEquals(1, UserService.getUsers().size());
+    public void registerButtonClickedTest(){
+        controller.registerButtonClicked();
+        assertEquals(0, UserService.getUsers().size());
     }
 
     @Test

@@ -6,6 +6,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class BandControllerTest {
 
+    private BandController controller;
+
     @Test
     void initialize() {
     }
