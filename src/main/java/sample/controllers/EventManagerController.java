@@ -85,6 +85,7 @@ public class EventManagerController {
     public void initialize() {
         currentUser = LoginController.getCurrentUser();
         user.setText("User: " + currentUser.getUsername());
+
         try {
             EventService.loadEventsFromFile();
         } catch (IOException e) {
