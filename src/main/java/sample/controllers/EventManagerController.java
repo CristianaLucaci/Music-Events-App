@@ -230,10 +230,10 @@ public class EventManagerController {
             deleteButton.setVisible(false);
             errorMessage.setVisible(false);
         } catch (BandDoesNotExistException e) {
-            errorMessage.setText("Error editing the event  Band does not exists     Try again");
+            errorMessage.setText("Error inviting band Band does not exists     Try again");
             errorMessage.setVisible(true);
         } catch (BandAlreadyInvitedException e) {
-            errorMessage.setText("Error editing the event  Band already invited     Try again");
+            errorMessage.setText("Error inviting band Band already invited     Try again");
             errorMessage.setVisible(true);
         }
 
@@ -323,10 +323,10 @@ public class EventManagerController {
             eventsAnchorPane.setVisible(true);
             newEventAnchorPane.setVisible(false);
         } catch (EventAlreadyExistsException e) {
-            errorMessage.setText("Error editing the event  Code already exists      Try again");
+            errorMessage.setText("Error adding a new event Code already exists      Try again");
             errorMessage.setVisible(true);
         } catch (NumberFormatException e) {
-            errorMessage.setText("Error editing the event  Wrong field type         Try again");
+            errorMessage.setText("Error adding a new event Wrong field type         Try again");
             errorMessage.setVisible(true);
         }
     }
