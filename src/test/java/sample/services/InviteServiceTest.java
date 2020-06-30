@@ -29,4 +29,11 @@ public class InviteServiceTest {
         assertTrue(Files.exists(InviteService.INVITES_PATH));
     }
 
+    @Test
+    public void testLoadInvitesFromFile() throws Exception{
+        InviteService.loadInvitesFromFile();
+        assertNotNull(InviteService.invites);
+        assertEquals(0,InviteService.invites.size());
+    }
+
 }
