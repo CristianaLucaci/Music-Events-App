@@ -17,8 +17,8 @@ import java.util.List;
 import java.util.Objects;
 
 public class EventService {
-    private static List<Event> events;
-    private static final Path EVENTS_PATH = FileSystemService.getPathToFile("config", "events.json");
+    static List<Event> events;
+    static final Path EVENTS_PATH = FileSystemService.getPathToFile("config", "events.json");
 
     public static void loadEventsFromFile() throws IOException{
         if(!Files.exists(EVENTS_PATH)){
@@ -37,7 +37,7 @@ public class EventService {
         persistEvents();
     }
 
-    private static void checkEventDoesNotAlreadyExist(String code) throws EventAlreadyExistsException {
+    public static void checkEventDoesNotAlreadyExist(String code) throws EventAlreadyExistsException {
         for (Event event : events) {
             if (Objects.equals(code, event.getCode()))
                 throw new EventAlreadyExistsException(code);
