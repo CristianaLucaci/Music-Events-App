@@ -16,9 +16,9 @@ import java.util.List;
 import java.util.Objects;
 
 public class InviteService {
-    private static List<User> users = UserService.getUsers();
-    private static List<Invite> invites;
-    private static final Path INVITES_PATH = FileSystemService.getPathToFile("config", "invites.json");
+    static List<User> users = UserService.getUsers();
+    static List<Invite> invites;
+    static final Path INVITES_PATH = FileSystemService.getPathToFile("config", "invites.json");
 
     public static void loadInvitesFromFile() throws IOException{
         if(!Files.exists(INVITES_PATH)){
