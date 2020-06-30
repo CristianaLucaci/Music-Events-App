@@ -22,52 +22,52 @@ import java.util.List;
 public class RegisterController {
 
     @FXML
-    private CheckBox userBox;
+    public CheckBox userBox;
     @FXML
-    private CheckBox eventManagerBox;
+    public CheckBox eventManagerBox;
     @FXML
-    private CheckBox bandBox;
+    public CheckBox bandBox;
     @FXML
-    private AnchorPane userAnchorPane;
+    public AnchorPane userAnchorPane;
     @FXML
-    private AnchorPane genresAnchorPane;
+    public AnchorPane genresAnchorPane;
     @FXML
-    private Button registerButton;
+    public Button registerButton;
     @FXML
-    private Text genresText;
+    public Text genresText;
     @FXML
-    private TextField textField1;
+    public TextField textField1;
     @FXML
-    private TextField textField2;
+    public TextField textField2;
     @FXML
-    private TextField emailField;
+    public TextField emailField;
     @FXML
-    private TextField phoneNumberField;
+    public TextField phoneNumberField;
     @FXML
-    private TextField usernameField;
+    public TextField usernameField;
     @FXML
-    private TextField passwordField;
+    public TextField passwordField;
     @FXML
-    private CheckBox rockCheckBox;
+    public CheckBox rockCheckBox;
     @FXML
-    private CheckBox jazzCheckBox;
+    public CheckBox jazzCheckBox;
     @FXML
-    private CheckBox heavyMetalCheckBox;
+    public CheckBox heavyMetalCheckBox;
     @FXML
-    private CheckBox reggaeCheckBox;
+    public CheckBox reggaeCheckBox;
     @FXML
-    private CheckBox latinCheckBox;
+    public CheckBox latinCheckBox;
     @FXML
-    private CheckBox folkCheckBox;
+    public CheckBox folkCheckBox;
     @FXML
-    private CheckBox electronicCheckBox;
+    public CheckBox electronicCheckBox;
     @FXML
-    private Text registrationMessage;
+    public Text registrationMessage;
     @FXML
-    private Button backButton;
+    public Button backButton;
 
-    private static String userType;
-    private static List<String> genres;
+    public static String userType;
+    public static List<String> genres;
 
     @FXML
     private void handleUserBox(){
@@ -131,20 +131,20 @@ public class RegisterController {
     }
 
     @FXML
-    public void registerButtonClicked(ActionEvent event) throws IOException {
+    public void registerButtonClicked(){
 
-            try {
-                handleGenreCheckBoxes();
-                UserService.addUser(userType, textField1.getText(), textField2.getText(), emailField.getText(), phoneNumberField.getText(), usernameField.getText(), passwordField.getText(), genres);
-                Parent registerParent = FXMLLoader.load(getClass().getResource("/fxml/login.fxml"));
-                Scene registerScene = new Scene(registerParent);
+        try {
+            //handleGenreCheckBoxes();
+            UserService.addUser(userType, textField1.getText(), textField2.getText(), emailField.getText(), phoneNumberField.getText(), usernameField.getText(), passwordField.getText(), genres);
+            /*Parent registerParent = FXMLLoader.load(getClass().getResource("/fxml/login.fxml"));
+            Scene registerScene = new Scene(registerParent);
 
-                Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                window.setScene(registerScene);
-                window.show();
-            } catch(UsernameAlreadyExistsException e){
-                registrationMessage.setText(e.getMessage());
-            }
+            Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            window.setScene(registerScene);
+            window.show();*/
+        } catch(UsernameAlreadyExistsException e){
+            registrationMessage.setText(e.getMessage());
+        }
 
     }
 
