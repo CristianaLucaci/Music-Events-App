@@ -36,35 +36,35 @@ import java.util.List;
 public class EventManagerController {
 
     @FXML
-    private TextField eventName;
+    public TextField eventName;
     @FXML
-    private TextField eventDate;
+    public TextField eventDate;
     @FXML
-    private TextField eventCode;
+    public TextField eventCode;
     @FXML
-    private TextField eventLocation;
+    public TextField eventLocation;
     @FXML
-    private TextField ticketPrice;
+    public TextField ticketPrice;
     @FXML
-    private TextField limitOfParticipants;
+    public TextField limitOfParticipants;
     @FXML
-    private TextField eventType;
+    public TextField eventType;
     @FXML
-    private TextField description;
+    public TextField description;
     @FXML
-    private TextArea eventDetailsArea;
+    public TextArea eventDetailsArea;
     @FXML
-    private Button inviteButton;
+    public Button inviteButton;
     @FXML
-    private Button editButton;
+    public Button editButton;
     @FXML
-    private Button deleteButton;
+    public Button deleteButton;
     @FXML
-    private Button newEventButton;
+    public Button newEventButton;
     @FXML
-    private Button saveEditButton;
+    public Button saveEditButton;
     @FXML
-    private Text errorMessage;
+    public Text errorMessage;
 
     @FXML
     private Text user;
@@ -84,7 +84,7 @@ public class EventManagerController {
     @FXML
     public void initialize() {
         currentUser = LoginController.getCurrentUser();
-        user.setText("User: " + currentUser.getText2());
+        user.setText("User: " + currentUser.getUsername());
         try {
             EventService.loadEventsFromFile();
         } catch (IOException e) {
