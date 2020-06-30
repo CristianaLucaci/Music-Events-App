@@ -1,6 +1,7 @@
 package sample.controllers;
 
 import javafx.application.Application;
+import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import org.apache.commons.io.FileUtils;
 import org.junit.Before;
@@ -35,14 +36,25 @@ public class ParticipantControllerTest extends ApplicationTest {
         controller = new ParticipantController();
         controller.text= new Text();
         controller.currentUser=new User();
+        controller.moneyInput=new TextField();
 
         controller.currentUser.setText2(TEST_USER);
         controller.text.setText(TEST_USER);
+        controller.moneyInput.setText("10");
+    }
+
+
+    @Test
+    public void testAddMoney(){
+        controller.addMoney(controller.moneyInput, controller.moneyInput.getText());
+        assertEquals(10,controller.getVar());
+        assertEquals(" 10",controller.printVar());
     }
 
     @Test
-    public void testInitialize(){
-        controller.initialize();
-        assertFalse(controller.text.equals(TEST_USER));
+    public void testRetrieveMoney(){
+        controller.retrieveMoney(controller.moneyInput, controller.moneyInput.getText());
+        assertEquals(-10,controller.getVar());
+        assertEquals(" -10",controller.printVar());
     }
 }

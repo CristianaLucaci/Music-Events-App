@@ -66,7 +66,10 @@ public class ParticipantController {
     public String printVar(){
         return " " + var;
     }
-    private boolean addMoney(TextField input, String message){
+    public int getVar(){
+        return this.var;
+    }
+     boolean addMoney(TextField input, String message){
         try{
             int money = Integer.parseInt(input.getText());
             var=var+money;
@@ -77,7 +80,7 @@ public class ParticipantController {
         }
     }
 
-    private boolean retrieveMoney(TextField input, String message){
+     boolean retrieveMoney(TextField input, String message){
         try{
             int money = Integer.parseInt(input.getText());
             var=var-money;
