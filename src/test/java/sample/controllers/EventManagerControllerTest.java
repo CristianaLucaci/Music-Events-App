@@ -9,6 +9,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.jupiter.api.Test;
 import org.testfx.framework.junit.ApplicationTest;
+import sample.model.Invite;
 import sample.services.EventService;
 import sample.services.FileSystemService;
 import sample.services.InviteService;
@@ -28,6 +29,8 @@ public class EventManagerControllerTest extends ApplicationTest {
     public static final String TICKET_PRICE = "50.00";
     public static final String LIMIT = "5000";
     public static final String DESCRIPTION = "testDescription";
+    public static final String BAND_NAME = "testBand";
+    public static final String INVITE_DESCRIPTION = "inviteTestDescription";
     private EventManagerController controller;
 
     @BeforeClass
@@ -70,9 +73,23 @@ public class EventManagerControllerTest extends ApplicationTest {
         assertEquals(1, EventService.getEvents().size());
     }
 
+    @Test
     public void testAddSameEventTwice() throws IOException {
         controller.newEventClicked(new ActionEvent());
         controller.newEventClicked(new ActionEvent());
-        //assertEquals("", );
+        assertEquals("Error editing the event  Code already exists      Try again", controller.errorMessage.getText());
+    }
+
+    @Test
+    public void testSendInvite() {
+        controller.sendInviteButtonPressed(new Button(), BAND_NAME, INVITE_DESCRIPTION);
+        assertEquals(1, InviteService.getInvites().size());
+    }
+
+    @Test
+    public void testSendInviteToTheSameBand() {
+        controller.sendInviteButtonPressed(new Button(), BAND_NAME, INVITE_DESCRIPTION);
+        controller.sendInviteButtonPressed(new Button(), BAND_NAME, INVITE_DESCRIPTION);
+        assertEquals("Error editing the event  Band already invited     Try again", controller.errorMessage.getText());
     }
 }
