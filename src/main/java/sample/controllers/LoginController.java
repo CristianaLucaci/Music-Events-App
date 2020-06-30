@@ -19,47 +19,20 @@ import java.util.Objects;
 
 public class LoginController {
 
-
     @FXML
-    private TextField usernameField;
+    public TextField usernameField;
     @FXML
-    private TextField passwordField;
+    public TextField passwordField;
     @FXML
-    private Button loginButton;
+    public Button loginButton;
     @FXML
-    private Text loginErrorText;
+    public Text loginErrorText;
 
     private static User currentUser = new User();
 
-    public void loginButtonClicked(ActionEvent event) throws IOException {
+    public void loginButtonClicked(){
         currentUser = UserService.searchUser(usernameField.getText(),passwordField.getText());
         String userType = UserService.searchUser(usernameField.getText(),passwordField.getText()).getUserType();
-        if(userType.equals("Band")) {
-            Parent registerParent = FXMLLoader.load(getClass().getResource("/fxml/band.fxml"));
-            Scene registerScene = new Scene(registerParent);
-
-            Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-            window.setScene(registerScene);
-            window.show();
-        }
-        else if(userType.equals("Event Manager")){
-            Parent registerParent = FXMLLoader.load(getClass().getResource("/fxml/eventmanager.fxml"));
-            Scene registerScene = new Scene(registerParent);
-
-            Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-            window.setScene(registerScene);
-            window.show();
-        }
-        else if(userType.equals("Participant")){
-            Parent registerParent = FXMLLoader.load(getClass().getResource("/fxml/participant.fxml"));
-            Scene registerScene = new Scene(registerParent);
-
-            Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-            window.setScene(registerScene);
-            window.show();
-        }
-        else if(userType.equals("wrong username or password"))
-            loginErrorText.setText("Wrong username or password");
     }
 
     public void registerButtonClicked(ActionEvent event) throws IOException {
