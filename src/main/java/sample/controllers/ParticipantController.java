@@ -26,42 +26,42 @@ import java.util.List;
 public class ParticipantController {
 
     @FXML
-    private Text text;
+     Text text;
     @FXML
-    private Text text1;
+     Text text1;
 
-    private User currentUser;
-
-    @FXML
-    private AnchorPane eventsAnchorPane;
+     User currentUser;
 
     @FXML
-    private AnchorPane soldAnchorPane;
+     AnchorPane eventsAnchorPane;
 
     @FXML
-    private AnchorPane upcomingEventsAnchorPane;
+     AnchorPane soldAnchorPane;
 
     @FXML
-    private Text descriptionText;
+     AnchorPane upcomingEventsAnchorPane;
 
     @FXML
-    private TextArea textEv;
+     Text descriptionText;
 
     @FXML
-    private Text soldText;
+     TextArea textEv;
 
     @FXML
-    private Text res;
+     Text soldText;
 
     @FXML
-    private Pane detailsPane;
+     Text res;
 
     @FXML
-    private TextField moneyInput;
+     Pane detailsPane;
 
-    private static int var;
-    private List<String> events;
-    private List<Event> upcomings;
+    @FXML
+     TextField moneyInput;
+
+     static int var;
+     List<String> events;
+     List<Event> upcomings;
 
     public String printVar(){
         return " " + var;
