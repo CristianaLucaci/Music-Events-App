@@ -60,7 +60,7 @@ public class ParticipantController {
     private TextField moneyInput;
 
     private static int var;
-    private List<Event> events;
+    private List<String> events;
     private List<Event> upcomings;
 
     public String printVar(){
@@ -168,6 +168,11 @@ public class ParticipantController {
         Scene alertScene = new Scene(alertParent);
         window.setScene(alertScene);
         window.showAndWait();
+
+        if(AlertBoxController.getRes()){
+            String[] details = textEv.getText().split("\n", 2);
+
+        }
     }
 
     public void seeEvent(String e){
